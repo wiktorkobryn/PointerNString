@@ -1,3 +1,7 @@
+WELOME TO THE POINTERNSTRING REPOSITORY
+There is an additional pdf file with project guide and description 
+Initial project made for SKN GetIt by Wiktor Kobryń.
+
 PROGRAMS USED FOR THE PROJECT (v1.0)
 
 ==================GODOT==================
