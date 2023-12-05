@@ -1,0 +1,2407 @@
+[gd_scene load_steps=39 format=3 uid="uid://o1tenemyepe"]
+
+[ext_resource type="Texture2D" uid="uid://bfu8ofshd6opy" path="res://textures/floor_tmp.png" id="1_hmcp7"]
+[ext_resource type="PackedScene" uid="uid://7mgm4cnxivnn" path="res://assets/player_1.tscn" id="1_jv8q6"]
+[ext_resource type="Script" path="res://scripts/player_1.cs" id="2_ff87a"]
+[ext_resource type="MeshLibrary" uid="uid://dg60f8oimhjcg" path="res://assets/wallBlockLibrary.tres" id="4_cfdf2"]
+[ext_resource type="PackedScene" uid="uid://2hflv3fiex36" path="res://assets/enemy1.tscn" id="5_4hbk7"]
+[ext_resource type="PackedScene" uid="uid://0j0c74qr5rfl" path="res://assets/coin.tscn" id="6_lo3b3"]
+[ext_resource type="Texture2D" uid="uid://cdxtnyxm400r7" path="res://textures/battery_full.png" id="7_o06t6"]
+[ext_resource type="Script" path="res://scripts/lblCounter.cs" id="8_2la8t"]
+[ext_resource type="FontFile" uid="uid://b5bq7e43eqhg2" path="res://fonts/Fyodor-Bold.ttf" id="8_05jtj"]
+[ext_resource type="Texture2D" uid="uid://c0o7vpknmd1io" path="res://textures/background1.png" id="10_1o52r"]
+[ext_resource type="Texture2D" uid="uid://cuxjak3ufgb4c" path="res://textures/background2.png" id="10_xjqff"]
+[ext_resource type="Texture2D" uid="uid://dj5w25j55nndm" path="res://textures/background3.png" id="11_ha1do"]
+[ext_resource type="Texture2D" uid="uid://c55ajchyqxa10" path="res://textures/background4.png" id="12_uio6k"]
+[ext_resource type="Texture2D" uid="uid://nk84v6a2egmu" path="res://textures/background5.png" id="13_pxyx0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tb75j"]
+sky_top_color = Color(0.972549, 0.980392, 0.533333, 1)
+sky_horizon_color = Color(0.505882, 0.701961, 0.576471, 1)
+sky_curve = 0.0989635
+ground_bottom_color = Color(0.207843, 0.396078, 0.603922, 1)
+ground_horizon_color = Color(0.505882, 0.701961, 0.576471, 1)
+ground_curve = 0.139289
+
+[sub_resource type="Sky" id="Sky_6mlko"]
+sky_material = SubResource("ProceduralSkyMaterial_tb75j")
+
+[sub_resource type="Environment" id="Environment_famif"]
+background_mode = 2
+background_energy_multiplier = 1.18
+sky = SubResource("Sky_6mlko")
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 4.0
+ssao_power = 2.35375
+ssao_detail = 1.66
+ssao_horizon = 0.15
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n06k"]
+size = Vector3(50, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lii7u"]
+albedo_texture = ExtResource("1_hmcp7")
+normal_scale = -16.0
+uv1_scale = Vector3(100, 50, 0)
+uv1_triplanar_sharpness = 0.183011
+
+[sub_resource type="BoxMesh" id="BoxMesh_al3b0"]
+material = SubResource("StandardMaterial3D_lii7u")
+size = Vector3(50, 1, 40)
+
+[sub_resource type="Animation" id="Animation_be8kl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8.95477, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10.0144, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_u47wx"]
+resource_name = "path"
+length = 16.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(8.95477, -0.25, 0, 0.25, 0, 10.9662, -0.25, 0, 0.25, 0, 10.9662, -0.25, 0, 0.25, 0, 8.99582, -0.25, 0, 0.25, 0, 16.9185, -0.25, 0, 0.25, 0, 16.9185, -0.25, 0, 0.25, 0, 11.9514, -0.25, 0, 0.25, 0, 11.9514, -0.25, 0, 0.25, 0, 9.98103, -0.25, 0, 0.25, 0, 9.98103, -0.25, 0, 0.25, 0, 2.94417, -0.25, 0, 0.25, 0, 2.94417, -0.25, 0, 0.25, 0, 6.96523, -0.25, 0, 0.25, 0, 6.96523, -0.25, 0, 0.25, 0, 8.97577, -0.25, 0, 0.25, 0, 8.95477, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 4, 6, 7.5, 8.5, 9, 10, 12, 13.5, 14.5, 15.5, 16, 16.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 4, 6, 7.5, 8.5, 9, 10, 12, 13.5, 14.5, 15.5, 16, 16.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(10.0144, -0.25, 0, 0.25, 0, 10.0144, -0.25, 0, 0.25, 0, 13.9141, -0.25, 0, 0.25, 0, 13.9141, -0.25, 0, 0.25, 0, 13.9141, -0.25, 0, 0.25, 0, 6.9604, -0.25, 0, 0.25, 0, 6.9604, -0.25, 0, 0.25, 0, 3.06065, -0.25, 0, 0.25, 0, 3.06065, -0.25, 0, 0.25, 0, 0.0229445, -0.25, 0, 0.25, 0, 0.0229445, -0.25, 0, 0.25, 0, 4.88173, -0.25, 0, 0.25, 0, 4.88173, -0.25, 0, 0.25, 0, 7.89753, -0.25, 0, 0.25, 0, 7.89753, -0.25, 0, 0.25, 0, 10.0144, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 4, 6, 7.5, 8.5, 9, 10, 12, 13.5, 14.5, 15.5, 16, 16.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 1.5, 1.9, 2, 5.9, 6, 11.9, 12)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 1.5, 1.9, 2, 5.9, 6, 11.9, 12)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 1.5, 1.9, 2, 5.9, 6, 11.9, 12)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iimvn"]
+_data = {
+"RESET": SubResource("Animation_be8kl"),
+"path": SubResource("Animation_u47wx")
+}
+
+[sub_resource type="Animation" id="Animation_l7gdi"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.93917, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-14.0792, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.0472, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_3aqs0"]
+resource_name = "path"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(4.93917, -0.25, 0, 0.25, 0, 17.0199, -0.25, 0, 0.25, 0, 17.0199, -0.25, 0, 0.25, 0, 4.96968, -0.25, 0, 0.25, 0, 4.93917, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 4.5, 7.5, 9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 4.5, 7.5, 9)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-14.0792, -0.25, 0, 0.25, 0, -14.0792, -0.25, 0, 0.25, 0, -9.10662, -0.25, 0, 0.25, 0, -9.10662, -0.25, 0, 0.25, 0, -14.0792, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 4.5, 7.5, 9)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.4, 4.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.4, 4.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.4, 4.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fddne"]
+_data = {
+"RESET": SubResource("Animation_l7gdi"),
+"path": SubResource("Animation_3aqs0")
+}
+
+[sub_resource type="Animation" id="Animation_m1ppk"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-11.9945, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-3.03608, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.0472, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_cd6cw"]
+resource_name = "path"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-11.9945, -0.25, 0, 0.25, 0, -14.0289, -0.25, 0, 0.25, 0, -14.0289, -0.25, 0, 0.25, 0, -6.99716, -0.25, 0, 0.25, 0, -6.99716, -0.25, 0, 0.25, 0, -14.0289, -0.25, 0, 0.25, 0, -14.0289, -0.25, 0, 0.25, 0, -11.9945, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 3, 4, 5.5, 6.5, 7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 3, 4, 5.5, 6.5, 7)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-3.03608, -0.25, 0, 0.25, 0, -3.03608, -0.25, 0, 0.25, 0, -6.02833, -0.25, 0, 0.25, 0, -6.02833, -0.25, 0, 0.25, 0, -6.02833, -0.25, 0, 0.25, 0, -6.02833, -0.25, 0, 0.25, 0, -3.03608, -0.25, 0, 0.25, 0, -3.03608, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 3, 4, 5.5, 6.5, 7)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1.0472, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 1.5, 3.9, 4, 6.4, 6.5, 7.1, 7.2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(3.14159, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 1.5, 3.9, 4, 6.4, 6.5, 7.1, 7.2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 1.5, 3.9, 4, 6.4, 6.5, 7.1, 7.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wlq3u"]
+_data = {
+"RESET": SubResource("Animation_m1ppk"),
+"path": SubResource("Animation_cd6cw")
+}
+
+[sub_resource type="Animation" id="Animation_fvf3g"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-16.9895, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-12.0905, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:rotation:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:rotation:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:rotation:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_w88tb"]
+resource_name = "path"
+length = 14.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-16.9895, -0.25, 0, 0.25, 0, -16.9895, -0.25, 0, 0.25, 0, 1.98137, -0.25, 0, 0.25, 0, 1.98137, -0.25, 0, 0.25, 0, 1.98137, -0.25, 0, 0.25, 0, -16.9895, -0.25, 0, 0.25, 0, -16.9895, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 5, 7, 9, 13.5, 14)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 5, 7, 9, 13.5, 14)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-11.9209, -0.25, 0, 0.25, 0, -13.9423, -0.25, 0, 0.25, 0, -13.9423, -0.25, 0, 0.25, 0, -5.9231, -0.25, 0, 0.25, 0, -13.9423, -0.25, 0, 0.25, 0, -13.9423, -0.25, 0, 0.25, 0, -11.9209, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 5, 7, 9, 13.5, 14)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:rotation:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.9, 7, 13.9)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:rotation:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.9, 7, 13.9)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:rotation:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.9, 7, 13.9)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2j7o7"]
+_data = {
+"RESET": SubResource("Animation_fvf3g"),
+"path": SubResource("Animation_w88tb")
+}
+
+[sub_resource type="Animation" id="Animation_f1x57"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(14.9524, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-6.07187, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_1b3rt"]
+resource_name = "path"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(14.9524, -0.25, 0, 0.25, 0, 14.9524, -0.25, 0, 0.25, 0, 8.99656, -0.25, 0, 0.25, 0, 8.99656, -0.25, 0, 0.25, 0, 14.9524, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 3.5, 5.5, 7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 3.5, 5.5, 7)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-6.07187, -0.25, 0, 0.25, 0, -6.07187, -0.25, 0, 0.25, 0, -6.07187, -0.25, 0, 0.25, 0, -6.07187, -0.25, 0, 0.25, 0, -6.07187, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 3.5, 5.5, 7)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.9, 2, 5.4, 5.5, 7.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.9, 2, 5.4, 5.5, 7.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.9, 2, 5.4, 5.5, 7.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04jy2"]
+_data = {
+"RESET": SubResource("Animation_f1x57"),
+"path": SubResource("Animation_1b3rt")
+}
+
+[sub_resource type="Animation" id="Animation_c4gfu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-17.0109, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10.0144, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_cbetl"]
+resource_name = "path"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-17.0109, -0.25, 0, 0.25, 0, -17.0109, -0.25, 0, 0.25, 0, -7.01731, -0.25, 0, 0.25, 0, -7.01731, -0.25, 0, 0.25, 0, -11.0038, -0.25, 0, 0.25, 0, -11.0038, -0.25, 0, 0.25, 0, -15.0323, -0.25, 0, 0.25, 0, -15.0323, -0.25, 0, 0.25, 0, -17.0109, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3.5, 4.5, 5.5, 6, 7, 7.5, 8.1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0, 2.11107, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3.5, 4.5, 5.5, 6, 7, 7.5, 8.1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(10.0144, -0.25, 0, 0.25, 0, 13.9008, -0.25, 0, 0.25, 0, 13.9008, -0.25, 0, 0.25, 0, 9.98093, -0.25, 0, 0.25, 0, 9.98093, -0.25, 0, 0.25, 0, 7.92473, -0.25, 0, 0.25, 0, 7.92473, -0.25, 0, 0.25, 0, 9.93897, -0.25, 0, 0.25, 0, 10.0144, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3.5, 4.5, 5.5, 6, 7, 7.5, 8.1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.4, 3.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.4, 3.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.4, 3.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pj75i"]
+_data = {
+"RESET": SubResource("Animation_c4gfu"),
+"path": SubResource("Animation_cbetl")
+}
+
+[node name="LevelMaze1" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_famif")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.169857, 0.985412, 0.0105454, 0.338752, 0.0483357, 0.939633, 0.925417, 0.163176, -0.34202, 25.381, 90.4733, -0.609966)
+shadow_enabled = true
+
+[node name="Floor(legacy)" type="StaticBody3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -3.25147, 0)
+
+[node name="FloorCollisionShape" type="CollisionShape3D" parent="Floor(legacy)"]
+shape = SubResource("BoxShape3D_3n06k")
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor(legacy)"]
+mesh = SubResource("BoxMesh_al3b0")
+
+[node name="Player1" parent="." instance=ExtResource("1_jv8q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+script = ExtResource("2_ff87a")
+
+[node name="MainCamera" type="Camera3D" parent="Player1"]
+transform = Transform3D(1, 0, 0, 0, 0.928751, 0.370703, 0, -0.370703, 0.928751, 0.147761, 2.85898, 5.70283)
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="CoinHolder1" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -3)
+
+[node name="Coin" parent="Coins/CoinHolder1" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder149" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -3)
+
+[node name="Coin" parent="Coins/CoinHolder149" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder150" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -11.475)
+
+[node name="Coin" parent="Coins/CoinHolder150" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder2" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.01041, 2, -14.0141)
+
+[node name="Coin" parent="Coins/CoinHolder2" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder3" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02613, 2, -14.0141)
+
+[node name="Coin" parent="Coins/CoinHolder3" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder4" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99201, 2, -14.0141)
+
+[node name="Coin" parent="Coins/CoinHolder4" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder5" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0516, 2, -14.0141)
+
+[node name="Coin" parent="Coins/CoinHolder5" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder6" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0281, 2, -14.0141)
+
+[node name="Coin" parent="Coins/CoinHolder6" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder7" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0349, 2, -14.0141)
+
+[node name="Coin" parent="Coins/CoinHolder7" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder8" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0418, 2, -14.0141)
+
+[node name="Coin" parent="Coins/CoinHolder8" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder9" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0418, 2, -12.0072)
+
+[node name="Coin" parent="Coins/CoinHolder9" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder10" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.03097, 2, -12.0072)
+
+[node name="Coin" parent="Coins/CoinHolder10" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder11" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.06137, 2, -10.0612)
+
+[node name="Coin" parent="Coins/CoinHolder11" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder12" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0516, 2, -8.96651)
+
+[node name="Coin" parent="Coins/CoinHolder12" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder13" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04471, 2, -8.96651)
+
+[node name="Coin" parent="Coins/CoinHolder13" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder14" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00743, 2, -8.96651)
+
+[node name="Coin" parent="Coins/CoinHolder14" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder15" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0281, 2, -8.96651)
+
+[node name="Coin" parent="Coins/CoinHolder15" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder16" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0349, 2, -8.96651)
+
+[node name="Coin" parent="Coins/CoinHolder16" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder17" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0246, 2, -11.0038)
+
+[node name="Coin" parent="Coins/CoinHolder17" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder18" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95984, 2, -13.9533)
+
+[node name="Coin" parent="Coins/CoinHolder18" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder19" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0137835, 2, -13.9533)
+
+[node name="Coin" parent="Coins/CoinHolder19" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder20" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99309, 2, -13.9533)
+
+[node name="Coin" parent="Coins/CoinHolder20" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder21" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99309, 2, -12.068)
+
+[node name="Coin" parent="Coins/CoinHolder21" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder22" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99309, 2, -9.96995)
+
+[node name="Coin" parent="Coins/CoinHolder22" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder23" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99309, 2, -7.99348)
+
+[node name="Coin" parent="Coins/CoinHolder23" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder24" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99309, 2, -6.01701)
+
+[node name="Coin" parent="Coins/CoinHolder24" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder25" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02066, 2, -6.01701)
+
+[node name="Coin" parent="Coins/CoinHolder25" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder26" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02066, 2, -8.00271)
+
+[node name="Coin" parent="Coins/CoinHolder26" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder27" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02066, 2, -10.0711)
+
+[node name="Coin" parent="Coins/CoinHolder27" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder28" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02066, 2, -11.9327)
+
+[node name="Coin" parent="Coins/CoinHolder28" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder29" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05338, 2, -13.9598)
+
+[node name="Coin" parent="Coins/CoinHolder29" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder30" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99771, 2, -13.9598)
+
+[node name="Coin" parent="Coins/CoinHolder30" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder31" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94203, 2, -13.9598)
+
+[node name="Coin" parent="Coins/CoinHolder31" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder32" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0105, 2, -13.9598)
+
+[node name="Coin" parent="Coins/CoinHolder32" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder33" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9548, 2, -13.9598)
+
+[node name="Coin" parent="Coins/CoinHolder33" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder34" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9818, 2, -13.9598)
+
+[node name="Coin" parent="Coins/CoinHolder34" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder35" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0089, 2, -13.9598)
+
+[node name="Coin" parent="Coins/CoinHolder35" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder36" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0089, 2, -11.3122)
+
+[node name="Coin" parent="Coins/CoinHolder36" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder37" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0089, 2, -9.07829)
+
+[node name="Coin" parent="Coins/CoinHolder37" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder38" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9819, 2, -9.07829)
+
+[node name="Coin" parent="Coins/CoinHolder38" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder39" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9134, 2, -9.07829)
+
+[node name="Coin" parent="Coins/CoinHolder39" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder40" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9277, 2, -9.07829)
+
+[node name="Coin" parent="Coins/CoinHolder40" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder41" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94203, 2, -9.07829)
+
+[node name="Coin" parent="Coins/CoinHolder41" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder42" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, -9.07829)
+
+[node name="Coin" parent="Coins/CoinHolder42" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder43" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94203, 2, -9.07829)
+
+[node name="Coin" parent="Coins/CoinHolder43" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder44" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, -8.98852)
+
+[node name="Coin" parent="Coins/CoinHolder44" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder45" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, -6.98852)
+
+[node name="Coin" parent="Coins/CoinHolder45" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder46" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, -4.98852)
+
+[node name="Coin" parent="Coins/CoinHolder46" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder47" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, -1.98852)
+
+[node name="Coin" parent="Coins/CoinHolder47" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder48" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder48" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder49" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.058, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder49" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder50" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.058, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder50" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder51" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.058, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder51" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder52" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05797, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder52" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder53" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder53" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder54" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05797, 2, -1.98852)
+
+[node name="Coin" parent="Coins/CoinHolder54" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder55" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.058, 2, -2.98852)
+
+[node name="Coin" parent="Coins/CoinHolder55" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder56" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.058, 2, -4.98852)
+
+[node name="Coin" parent="Coins/CoinHolder56" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder57" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.058, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder57" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder58" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.058, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder58" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder59" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder59" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder60" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05797, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder60" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder61" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, -3.98852)
+
+[node name="Coin" parent="Coins/CoinHolder61" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder62" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05797, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder62" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder63" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05797, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder63" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder64" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94203, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder64" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder65" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94203, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder65" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder66" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder66" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder67" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94203, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder67" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder68" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.942, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder68" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder69" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.942, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder69" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder70" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.942, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder70" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder71" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, 0.0114832)
+
+[node name="Coin" parent="Coins/CoinHolder71" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder72" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, 2.01148)
+
+[node name="Coin" parent="Coins/CoinHolder72" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder73" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, -1.98852)
+
+[node name="Coin" parent="Coins/CoinHolder73" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder74" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, -3.98852)
+
+[node name="Coin" parent="Coins/CoinHolder74" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder75" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder75" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder76" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94203, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder76" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder77" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.942, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder77" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder78" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.942, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder78" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder79" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.942, 2, -3.98852)
+
+[node name="Coin" parent="Coins/CoinHolder79" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder81" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder81" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder82" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94203, 2, -5.98852)
+
+[node name="Coin" parent="Coins/CoinHolder82" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder83" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, -3.98852)
+
+[node name="Coin" parent="Coins/CoinHolder83" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder84" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, -1.98852)
+
+[node name="Coin" parent="Coins/CoinHolder84" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder85" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94203, 2, 3.01148)
+
+[node name="Coin" parent="Coins/CoinHolder85" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder86" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.942, 2, 3.01148)
+
+[node name="Coin" parent="Coins/CoinHolder86" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder87" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.942, 2, 3.01148)
+
+[node name="Coin" parent="Coins/CoinHolder87" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder88" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, 7.01148)
+
+[node name="Coin" parent="Coins/CoinHolder88" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder89" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.942, 2, 7.01148)
+
+[node name="Coin" parent="Coins/CoinHolder89" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder90" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.942, 2, 7.01148)
+
+[node name="Coin" parent="Coins/CoinHolder90" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder91" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.942, 2, 7.01148)
+
+[node name="Coin" parent="Coins/CoinHolder91" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder92" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94203, 2, 7.01148)
+
+[node name="Coin" parent="Coins/CoinHolder92" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder93" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, 7.01148)
+
+[node name="Coin" parent="Coins/CoinHolder93" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder94" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder94" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder95" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94203, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder95" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder96" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94203, 2, 3.01148)
+
+[node name="Coin" parent="Coins/CoinHolder96" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder97" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94203, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder97" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder98" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.942, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder98" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder99" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.942, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder99" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder100" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.942, 2, 12.0115)
+
+[node name="Coin" parent="Coins/CoinHolder100" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder101" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.942, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder101" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder102" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94203, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder102" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder103" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.942, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder103" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder104" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.942, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder104" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder105" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder105" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder106" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, 11.6213)
+
+[node name="Coin" parent="Coins/CoinHolder106" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder107" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.942, 2, 9.47255)
+
+[node name="Coin" parent="Coins/CoinHolder107" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder108" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05797, 2, 9.01148)
+
+[node name="Coin" parent="Coins/CoinHolder108" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder109" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0579662, 2, 9.01148)
+
+[node name="Coin" parent="Coins/CoinHolder109" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder110" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94203, 2, 9.01148)
+
+[node name="Coin" parent="Coins/CoinHolder110" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder111" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94203, 2, 9.01148)
+
+[node name="Coin" parent="Coins/CoinHolder111" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder112" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0579662, 2, 7.01148)
+
+[node name="Coin" parent="Coins/CoinHolder112" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder113" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0579662, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder113" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder114" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94203, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder114" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder115" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05797, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder115" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder116" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94203, 2, 12.0115)
+
+[node name="Coin" parent="Coins/CoinHolder116" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder117" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94203, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder117" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder119" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94203, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder119" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder118" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05797, 2, 12.0115)
+
+[node name="Coin" parent="Coins/CoinHolder118" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder80" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.942, 2, -1.98852)
+
+[node name="Coin" parent="Coins/CoinHolder80" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder120" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94203, 2, 12.0115)
+
+[node name="Coin" parent="Coins/CoinHolder120" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder121" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05797, 2, 12.0115)
+
+[node name="Coin" parent="Coins/CoinHolder121" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder122" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05797, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder122" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder123" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05797, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder123" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder124" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder124" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder125" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, 12.0115)
+
+[node name="Coin" parent="Coins/CoinHolder125" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder126" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder126" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder127" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05797, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder127" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder128" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.058, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder128" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder129" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.058, 2, 8.01148)
+
+[node name="Coin" parent="Coins/CoinHolder129" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder130" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.058, 2, 8.01148)
+
+[node name="Coin" parent="Coins/CoinHolder130" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder131" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.058, 2, 8.01148)
+
+[node name="Coin" parent="Coins/CoinHolder131" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder132" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.058, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder132" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder133" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, 10.0115)
+
+[node name="Coin" parent="Coins/CoinHolder133" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder134" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, 12.0115)
+
+[node name="Coin" parent="Coins/CoinHolder134" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder135" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.058, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder135" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder136" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.058, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder136" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder137" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.058, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder137" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder138" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.058, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder138" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder139" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05797, 2, 14.0115)
+
+[node name="Coin" parent="Coins/CoinHolder139" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder140" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, 7.40594)
+
+[node name="Coin" parent="Coins/CoinHolder140" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder141" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05797, 2, 9.01148)
+
+[node name="Coin" parent="Coins/CoinHolder141" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder142" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05797, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder142" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder143" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05797, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder143" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder144" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05797, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder144" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder145" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.058, 2, 5.01148)
+
+[node name="Coin" parent="Coins/CoinHolder145" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder146" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.058, 2, 3.01148)
+
+[node name="Coin" parent="Coins/CoinHolder146" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder147" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.058, 2, 3.01148)
+
+[node name="Coin" parent="Coins/CoinHolder147" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CoinHolder148" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.058, 2, 3.01148)
+
+[node name="Coin" parent="Coins/CoinHolder148" instance=ExtResource("6_lo3b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Battery" type="Sprite2D" parent="UI"]
+position = Vector2(64, 64)
+scale = Vector2(0.13173, 0.120632)
+texture = ExtResource("7_o06t6")
+
+[node name="lblX" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 47.0
+offset_right = 223.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("8_05jtj")
+theme_override_font_sizes/font_size = 30
+text = "X"
+
+[node name="lblCounter" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 39.0
+offset_right = 269.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("8_05jtj")
+theme_override_font_sizes/font_size = 50
+text = "cnt"
+script = ExtResource("8_2la8t")
+
+[node name="ExitTimer" type="Timer" parent="UI/lblCounter"]
+wait_time = 3.0
+
+[node name="WinScreen" type="Node2D" parent="UI/lblCounter"]
+visible = false
+position = Vector2(270, 17)
+
+[node name="bcgWin" type="ColorRect" parent="UI/lblCounter/WinScreen"]
+offset_left = -105.0
+offset_top = -35.0
+offset_right = -53.0
+offset_bottom = 5.0
+scale = Vector2(14.5322, 2.84082)
+color = Color(0.0823529, 0.196078, 0.443137, 1)
+
+[node name="lblWin" type="Label" parent="UI/lblCounter/WinScreen"]
+offset_left = -84.0
+offset_top = -6.0
+offset_right = 443.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("8_05jtj")
+theme_override_font_sizes/font_size = 50
+text = "ENERGY COLLECTED - BATTERY FULL!"
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Layer1" type="Node3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.51838, 0)
+
+[node name="Buildings1" type="Sprite3D" parent="Background/Layer1"]
+transform = Transform3D(1.64847, 0, 0, 0, 1.64847, 0, 0, 0, 1.64847, -16.2154, 1.87979, -24.1946)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("10_1o52r")
+
+[node name="Buildings2" type="Sprite3D" parent="Background/Layer1"]
+transform = Transform3D(1.64847, 0, 0, 0, 1.64847, 0, 0, 0, 1.64847, 17.3591, -0.0300541, -25.8658)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("10_xjqff")
+
+[node name="Layer2" type="Node3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.09584, 16.6293, 1.10801)
+
+[node name="Buildings3" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.71744, 0, 0, 0, 2.71744, 0, 0, 0, 2.71744, -42.6125, -4.3892, -50.2563)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("11_ha1do")
+
+[node name="Buildings4" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.71, 0, 0, 0, 2.71, 0, 0, 0, 2.71, 11.271, 3.56313, -48.3971)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("12_uio6k")
+
+[node name="Buildings4b" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.71, 0, 0, 0, -2.71, -2.36916e-07, 0, 2.36916e-07, -2.71, 11.271, -36.672, -48.3971)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("12_uio6k")
+
+[node name="Buildings5" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.78, 0, 0, 0, 2.78, 0, 0, 0, 2.78, 67.1819, -7.23953, -50.367)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("13_pxyx0")
+
+[node name="FloorGridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("4_cfdf2")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65535, 0, 196611, 65534, 0, 196610, 65533, 0, 196610, 65531, 0, 196610, 65530, 0, 196610, 65529, 0, 3, 65528, 0, 196610, 65527, 0, 196610, 65526, 0, 196610, 65525, 0, 196610, 65524, 0, 196610, 65523, 0, 196610, 65522, 0, 196610, 65521, 0, 196610, 65520, 0, 196610, 65519, 0, 196610, 65517, 0, 196610, 65518, 0, 196610, 65517, 1, 196610, 65517, 2, 196610, 65517, 3, 196610, 65517, 4, 196610, 65517, 5, 196610, 65517, 6, 196610, 65517, 7, 196610, 65517, 8, 196610, 65517, 9, 196610, 65517, 10, 196610, 65517, 11, 196610, 65517, 12, 196610, 65517, 13, 196610, 65517, 14, 196609, 65518, 14, 196609, 65519, 14, 196609, 65520, 14, 196609, 65521, 14, 196609, 65522, 14, 196610, 65523, 14, 196609, 65524, 14, 196609, 65525, 14, 196609, 65526, 14, 196609, 65527, 14, 196609, 65528, 14, 196610, 65529, 14, 196610, 65530, 14, 196609, 65531, 14, 196609, 65532, 14, 196609, 65533, 14, 196609, 65534, 14, 196609, 65535, 14, 196610, 0, 13, 196610, 1, 13, 196610, 0, 14, 196610, 1, 14, 196610, 2, 14, 196610, 3, 14, 196610, 4, 14, 196610, 5, 14, 196610, 6, 14, 196610, 7, 14, 196610, 8, 14, 196610, 9, 14, 196610, 10, 14, 196610, 11, 14, 196610, 12, 14, 196610, 13, 14, 196610, 14, 14, 196610, 15, 14, 196610, 2, 0, 196610, 2, 65535, 196610, 3, 65535, 196610, 4, 65535, 196610, 5, 65535, 196610, 6, 65535, 196610, 7, 0, 196610, 8, 0, 196610, 9, 0, 196610, 10, 0, 196610, 11, 0, 196610, 12, 0, 196610, 13, 0, 196610, 14, 0, 196610, 15, 0, 196610, 15, 1, 196610, 15, 2, 196610, 15, 3, 196610, 15, 4, 196610, 15, 5, 196610, 15, 6, 196610, 15, 7, 196610, 15, 8, 196610, 15, 9, 196610, 15, 10, 196610, 15, 11, 196610, 15, 12, 196610, 15, 13, 196610, 16, 13, 196610, 16, 14, 196610, 16, 12, 196611, 16, 11, 196610, 16, 10, 196610, 16, 9, 196610, 16, 8, 196611, 16, 7, 196610, 16, 6, 196610, 16, 5, 196610, 16, 4, 196610, 16, 3, 196610, 16, 2, 196610, 16, 1, 196610, 16, 0, 196610, 6, 0, 196610, 5, 0, 196610, 4, 0, 196610, 3, 0, 196610, 1, 0, 196610, 3, 1, 196610, 1, 1, 196610, 65535, 1, 196610, 65534, 1, 196610, 0, 1, 196610, 2, 1, 196610, 4, 1, 196610, 5, 1, 196610, 65533, 1, 196610, 65531, 1, 196610, 65530, 1, 196610, 65533, 2, 196610, 0, 2, 196610, 3, 2, 196610, 6, 2, 196610, 7, 2, 196610, 4, 2, 196610, 65531, 2, 196610, 65527, 3, 196610, 65526, 3, 196610, 65525, 3, 196610, 65528, 3, 196610, 65531, 3, 196610, 65535, 3, 196610, 2, 3, 196610, 3, 3, 196610, 4, 3, 196610, 1, 2, 196610, 65535, 2, 196610, 65532, 2, 196610, 65534, 2, 196610, 65529, 1, 196610, 65528, 1, 196611, 65527, 1, 196611, 65528, 2, 196610, 65530, 2, 196610, 65532, 1, 196610, 65529, 2, 196610, 65530, 3, 196610, 65532, 3, 196610, 65533, 3, 196610, 65534, 3, 196610, 1, 3, 196610, 5, 2, 196610, 65526, 2, 196610, 65521, 3, 196610, 65520, 3, 196610, 65519, 3, 196610, 65520, 4, 196610, 65522, 4, 196610, 65525, 4, 196610, 65530, 4, 196610, 0, 4, 196610, 5, 4, 196610, 7, 4, 196610, 7, 3, 196610, 6, 3, 196610, 65531, 5, 3, 65533, 5, 196610, 65535, 5, 196610, 1, 5, 196610, 3, 5, 196610, 3, 4, 196610, 2, 4, 196610, 65529, 3, 196610, 65529, 4, 196610, 65531, 4, 3, 65534, 5, 196610, 0, 5, 196610, 4, 5, 3, 4, 4, 3, 65534, 4, 196610, 65532, 4, 196610, 65528, 4, 196610, 65526, 4, 196610, 65525, 5, 196610, 65525, 6, 196610, 65526, 6, 196610, 65527, 6, 196610, 14, 13, 196610, 14, 12, 196610, 14, 11, 196610, 14, 10, 196610, 14, 9, 196610, 14, 8, 196610, 14, 7, 196610, 14, 6, 196610, 14, 5, 196610, 14, 4, 196610, 14, 3, 196610, 14, 2, 196610, 14, 1, 196611, 13, 1, 196611, 12, 1, 196610, 11, 1, 196610, 10, 1, 196610, 9, 1, 196610, 8, 1, 196610, 7, 1, 196610, 6, 1, 196610, 8, 2, 196610, 8, 3, 196610, 8, 4, 196610, 8, 5, 196610, 8, 6, 196610, 8, 7, 196610, 8, 8, 196610, 8, 9, 196610, 8, 10, 196610, 8, 11, 196610, 9, 11, 196610, 9, 12, 196610, 10, 12, 196610, 11, 12, 196610, 12, 12, 196610, 13, 12, 196610, 13, 11, 196610, 13, 10, 196610, 13, 9, 196610, 13, 8, 196610, 13, 7, 196610, 13, 6, 196610, 13, 5, 196611, 13, 4, 196610, 13, 3, 196610, 13, 2, 196610, 12, 2, 196610, 11, 2, 196610, 10, 2, 196610, 9, 2, 196610, 9, 9, 196610, 9, 10, 196610, 10, 10, 196610, 10, 11, 196610, 11, 11, 196610, 12, 11, 196610, 12, 10, 196610, 12, 9, 196610, 12, 8, 196610, 12, 7, 196610, 12, 6, 196610, 12, 5, 196611, 12, 4, 196610, 12, 3, 196610, 11, 3, 196610, 10, 3, 196610, 9, 3, 196610, 9, 4, 196610, 9, 5, 196610, 9, 6, 196610, 9, 7, 196610, 9, 8, 196610, 10, 9, 196610, 10, 8, 196610, 10, 6, 196610, 10, 4, 196610, 10, 5, 196610, 10, 7, 196610, 11, 10, 196610, 11, 9, 196610, 11, 8, 196610, 11, 7, 196610, 11, 6, 196610, 11, 5, 196611, 11, 4, 196610, 13, 13, 196610, 12, 13, 196610, 11, 13, 196610, 10, 13, 196610, 9, 13, 196610, 8, 13, 196610, 7, 13, 196610, 6, 13, 196610, 5, 13, 196610, 4, 13, 196610, 3, 13, 196610, 2, 13, 196610, 65535, 13, 196610, 65534, 13, 196610, 65533, 13, 196610, 65532, 13, 196610, 65531, 13, 196610, 65530, 13, 196610, 65529, 13, 196610, 65528, 13, 196610, 65527, 13, 196610, 65526, 13, 196610, 65525, 13, 196610, 65524, 13, 196610, 65523, 13, 196610, 65522, 13, 196610, 65521, 13, 196610, 65520, 13, 196610, 65519, 13, 196610, 65518, 13, 196610, 65518, 9, 196610, 65518, 8, 196610, 65518, 7, 196610, 65518, 6, 196610, 65518, 5, 196610, 65518, 4, 196610, 65518, 3, 196610, 65518, 2, 196610, 65519, 2, 196610, 65519, 1, 196610, 65518, 1, 196610, 65519, 9, 196610, 65519, 10, 196610, 65519, 11, 196611, 65518, 12, 196610, 65518, 10, 196610, 65518, 11, 196611, 65520, 11, 196610, 65521, 11, 196610, 65522, 11, 196610, 65523, 11, 196610, 65524, 11, 196610, 65525, 11, 196610, 65520, 12, 196610, 65519, 12, 196610, 65521, 12, 196610, 65522, 12, 196610, 65526, 11, 196610, 65527, 11, 196610, 65528, 11, 196610, 65531, 11, 196610, 65523, 12, 196610, 65524, 12, 196610, 65525, 12, 196610, 65526, 12, 196610, 65527, 12, 196610, 65528, 12, 196610, 65532, 11, 196610, 65533, 11, 196610, 65535, 11, 196610, 1, 11, 196610, 3, 11, 196610, 4, 11, 196610, 5, 11, 196610, 2, 12, 196610, 65535, 12, 196610, 65533, 12, 196610, 65532, 12, 196610, 65531, 12, 196610, 65534, 12, 196610, 0, 12, 196610, 1, 12, 196610, 65534, 11, 196610, 0, 11, 196610, 2, 11, 196610, 6, 11, 196610, 7, 11, 196610, 5, 12, 196610, 3, 12, 196610, 4, 12, 196610, 6, 12, 196610, 7, 12, 196610, 8, 12, 196610, 7, 9, 196610, 7, 8, 196610, 7, 7, 196610, 7, 6, 196610, 7, 10, 196610, 7, 5, 196610, 6, 5, 196610, 6, 6, 196610, 5, 8, 196610, 5, 9, 196610, 5, 10, 196611, 5, 7, 196610, 5, 6, 196610, 5, 3, 196610, 6, 4, 196610, 6, 7, 196610, 6, 8, 196610, 6, 9, 196610, 6, 10, 196610, 5, 5, 196610, 4, 9, 196610, 3, 10, 196610, 3, 8, 196610, 3, 6, 196610, 3, 7, 196610, 3, 9, 196610, 4, 8, 196610, 4, 10, 196611, 4, 7, 196610, 4, 6, 196610, 2, 10, 196610, 2, 9, 196610, 2, 8, 196610, 2, 7, 196610, 2, 6, 196610, 2, 5, 196610, 2, 2, 196610, 1, 4, 196610, 1, 7, 196610, 0, 9, 196610, 0, 10, 196610, 0, 8, 196610, 0, 7, 196610, 0, 6, 196610, 1, 6, 196610, 1, 8, 196610, 1, 9, 196610, 1, 10, 196610, 0, 3, 196610, 65535, 8, 196610, 65534, 10, 196610, 65528, 10, 196610, 65530, 9, 196610, 65531, 9, 196610, 65532, 9, 196610, 65533, 8, 196610, 65534, 8, 196610, 65532, 8, 196610, 65531, 8, 196610, 65530, 8, 196610, 65528, 9, 196610, 65526, 9, 196610, 65524, 9, 196610, 65525, 9, 196610, 65527, 9, 196610, 65535, 9, 196610, 65534, 9, 196610, 65533, 9, 196610, 65529, 9, 196610, 65523, 9, 196610, 65522, 9, 196610, 65520, 10, 196610, 65521, 10, 196610, 65522, 10, 196610, 65523, 10, 196610, 65527, 10, 196610, 65525, 10, 196610, 65524, 10, 196610, 65526, 10, 196610, 65532, 10, 196610, 65535, 10, 196610, 65533, 10, 196610, 65531, 10, 196610, 65530, 10, 196610, 65532, 7, 196610, 65532, 6, 196610, 65532, 5, 196610, 65533, 4, 196610, 65534, 6, 196610, 65535, 6, 196610, 65535, 4, 196610, 65535, 7, 196610, 65533, 7, 196610, 65533, 6, 196610, 65534, 7, 196610, 65528, 6, 196610, 65527, 7, 196610, 65527, 8, 196610, 65530, 7, 196610, 65531, 6, 196610, 65531, 7, 196610, 65530, 5, 196610, 65528, 8, 196610, 65529, 7, 196610, 65529, 5, 196610, 65528, 7, 196610, 65530, 6, 196610, 65529, 6, 196610, 65529, 8, 196610, 65526, 8, 196610, 65527, 5, 196610, 65526, 5, 196610, 65524, 5, 196610, 65524, 6, 196610, 65527, 4, 196610, 65528, 5, 196610, 65527, 2, 196610, 65526, 1, 196610, 65524, 1, 196610, 65523, 1, 196610, 65522, 1, 196610, 65521, 1, 196610, 65520, 1, 196610, 65520, 2, 196610, 65521, 4, 196610, 65520, 5, 196610, 65519, 4, 196610, 65519, 5, 196610, 65519, 6, 196610, 65519, 7, 196610, 65519, 8, 196610, 65520, 9, 196610, 65520, 8, 196610, 65520, 7, 196610, 65520, 6, 196610, 65521, 5, 196610, 65521, 6, 196610, 65521, 7, 196610, 65521, 8, 196610, 65522, 7, 196610, 65522, 6, 196610, 65522, 5, 196610, 65521, 9, 196610, 65522, 8, 196610, 65523, 6, 3, 65523, 7, 3, 65523, 8, 3, 65523, 5, 196610, 65524, 8, 196610, 65525, 8, 196610, 65525, 7, 196610, 65526, 7, 196610, 65524, 7, 196610, 65522, 3, 196610, 65522, 2, 196610, 65523, 3, 196610, 65524, 3, 196610, 65523, 2, 196610, 65525, 2, 196610, 65521, 2, 196610, 65524, 4, 196610, 65524, 2, 196610, 65523, 4, 196610, 65525, 1, 196610, 17, 14, 196610, 17, 13, 196610, 17, 12, 196611, 17, 11, 196610, 17, 10, 196610, 17, 9, 196610, 17, 8, 196611, 17, 7, 196610, 17, 6, 196610, 17, 5, 196610, 17, 4, 196610, 17, 3, 196610, 17, 2, 196610, 17, 1, 196610, 17, 0, 196610, 18, 14, 196610, 18, 13, 196610, 18, 12, 196610, 18, 11, 196610, 18, 10, 196610, 18, 9, 196610, 18, 8, 196610, 18, 7, 196610, 18, 6, 196610, 18, 5, 196610, 18, 4, 196610, 18, 3, 196610, 18, 2, 196610, 18, 1, 196610, 18, 0, 196610, 65517, 65534, 196610, 65517, 65533, 196610, 65517, 65532, 196610, 65517, 65531, 196610, 65517, 65530, 196610, 65517, 65529, 196610, 65517, 65528, 196610, 65517, 65527, 196610, 65517, 65526, 196610, 65517, 65525, 196610, 65517, 65524, 196610, 65517, 65523, 196610, 65518, 65529, 196610, 65518, 65530, 196610, 65517, 65535, 196610, 65518, 65523, 196610, 65519, 65523, 196610, 65520, 65523, 196610, 65522, 65523, 196610, 65524, 65523, 196611, 65525, 65523, 196610, 65527, 65523, 196610, 65528, 65523, 196610, 65529, 65523, 196610, 65530, 65523, 196610, 65531, 65523, 196610, 65532, 65523, 196610, 65533, 65523, 196610, 65534, 65523, 196610, 65535, 65523, 196610, 0, 65523, 196610, 65531, 65522, 196610, 65530, 65522, 196610, 65529, 65522, 196610, 65528, 65522, 196610, 65527, 65522, 196610, 65526, 65522, 196610, 65523, 65523, 196611, 65521, 65523, 196610, 65520, 65522, 196610, 65519, 65522, 196610, 65517, 65522, 196610, 65518, 65522, 196610, 65521, 65522, 196610, 65522, 65522, 196610, 65523, 65522, 196610, 65524, 65522, 196610, 65525, 65522, 196610, 65526, 65523, 196610, 65532, 65522, 3, 65531, 65521, 196610, 65533, 65522, 196610, 65534, 65522, 196610, 65535, 65522, 196610, 0, 65522, 196610, 65535, 65521, 196610, 0, 65521, 196610, 65534, 65521, 196610, 65533, 65521, 196610, 65532, 65521, 3, 65530, 65521, 196610, 65529, 65521, 196610, 65528, 65521, 196610, 65527, 65521, 196610, 65526, 65521, 196610, 65525, 65521, 196610, 65524, 65521, 196610, 65523, 65521, 196610, 65522, 65521, 196610, 65521, 65521, 196610, 65520, 65521, 196610, 65519, 65521, 196610, 65518, 65521, 196610, 65517, 65521, 196610, 1, 65521, 196610, 2, 65521, 196610, 3, 65521, 196610, 4, 65521, 196610, 5, 65521, 196610, 6, 65521, 196610, 7, 65521, 196610, 8, 65521, 196610, 9, 65521, 196610, 10, 65521, 196610, 11, 65521, 196610, 12, 65521, 196610, 13, 65521, 196610, 14, 65521, 196610, 15, 65521, 196610, 16, 65521, 196610, 17, 65521, 196610, 17, 65522, 196610, 17, 65523, 196610, 17, 65524, 196610, 17, 65525, 196610, 17, 65526, 196610, 17, 65527, 196610, 17, 65529, 196610, 17, 65530, 196610, 17, 65531, 196610, 17, 65532, 196608, 17, 65533, 196610, 17, 65534, 196610, 17, 65535, 196610, 18, 65535, 196610, 18, 65534, 196608, 18, 65533, 196608, 18, 65532, 196610, 18, 65531, 196610, 18, 65524, 196610, 18, 65526, 196610, 18, 65527, 196610, 18, 65528, 196610, 18, 65529, 196610, 18, 65530, 196610, 18, 65522, 196610, 18, 65523, 196610, 18, 65521, 196610, 18, 65525, 196610, 1, 65523, 196610, 3, 65523, 196610, 4, 65523, 196610, 5, 65523, 196610, 6, 65523, 196610, 7, 65523, 196610, 8, 65523, 196610, 9, 65523, 196610, 10, 65523, 196610, 11, 65523, 196611, 12, 65523, 196611, 13, 65523, 196610, 14, 65523, 196610, 15, 65523, 196610, 16, 65523, 196610, 16, 65522, 196610, 15, 65522, 196610, 14, 65522, 196610, 13, 65522, 196610, 12, 65522, 196610, 11, 65522, 196610, 10, 65522, 196610, 9, 65522, 196610, 8, 65522, 196610, 7, 65522, 196610, 6, 65522, 196610, 5, 65522, 196610, 4, 65522, 196610, 3, 65522, 196610, 2, 65522, 196610, 1, 65522, 196610, 2, 65523, 196610, 65517, 65520, 196610, 65518, 65520, 196610, 65519, 65520, 196610, 65520, 65520, 196610, 65521, 65520, 196610, 65522, 65520, 196610, 65523, 65520, 196610, 65524, 65520, 196610, 65525, 65520, 196610, 65526, 65520, 196610, 65527, 65520, 196610, 65528, 65520, 196610, 65529, 65520, 196610, 65530, 65520, 196610, 65531, 65520, 196610, 65532, 65520, 196610, 65533, 65520, 196610, 65534, 65520, 196610, 65535, 65520, 196610, 0, 65520, 196610, 1, 65520, 196610, 2, 65520, 196610, 3, 65520, 196610, 4, 65520, 196610, 5, 65520, 196610, 6, 65520, 196610, 7, 65520, 196610, 8, 65520, 196610, 9, 65520, 196610, 10, 65520, 196610, 11, 65520, 196610, 12, 65520, 196610, 13, 65520, 196610, 14, 65520, 196610, 15, 65520, 196610, 16, 65520, 196610, 17, 65520, 196610, 18, 65520, 196610, 65518, 65526, 196610, 65518, 65527, 196610, 65518, 65528, 196610, 65518, 65534, 196610, 65519, 65534, 196610, 65519, 65532, 196610, 65519, 65531, 196610, 65518, 65524, 196610, 65518, 65535, 196610, 65519, 65535, 196610, 65519, 65530, 196610, 65519, 65529, 196610, 65519, 65528, 196610, 65519, 65527, 196610, 65519, 65526, 196610, 65519, 65525, 196610, 65519, 65524, 196610, 65518, 65525, 196610, 65520, 65524, 196610, 65520, 65525, 196610, 65520, 65526, 3, 65520, 65527, 3, 65520, 65528, 196610, 65520, 65529, 196610, 65520, 65530, 196610, 65520, 65531, 196610, 65520, 65532, 196610, 65520, 65533, 196610, 65520, 65534, 196610, 65520, 65535, 196610, 65521, 65535, 196610, 65521, 65534, 196610, 65521, 65533, 196610, 65521, 65532, 196610, 65521, 65531, 196610, 65521, 65529, 196610, 65521, 65528, 196610, 65521, 65527, 196610, 65521, 65526, 196610, 65521, 65525, 196610, 65521, 65524, 196610, 65522, 65524, 196610, 65522, 65525, 196610, 65522, 65526, 196610, 65521, 65530, 196610, 65522, 65531, 196610, 65522, 65532, 196610, 65522, 65530, 196610, 65522, 65529, 196610, 65522, 65527, 196610, 65522, 65528, 196610, 65522, 65533, 196610, 65522, 65534, 196610, 65522, 65535, 196610, 65523, 65533, 196610, 65523, 65532, 196610, 65523, 65531, 196610, 65523, 65530, 196610, 65523, 65529, 196610, 65523, 65528, 196610, 65523, 65527, 196610, 65523, 65526, 196610, 65523, 65525, 196610, 65523, 65524, 196610, 65523, 65534, 196611, 65523, 65535, 196610, 65524, 65535, 196610, 65524, 65534, 196611, 65524, 65533, 196610, 65524, 65532, 196610, 65524, 65531, 196610, 65524, 65530, 196610, 65524, 65529, 196610, 65524, 65528, 196610, 65524, 65527, 196610, 65524, 65526, 196610, 65524, 65525, 196610, 65524, 65524, 196610, 65525, 65524, 196610, 65525, 65525, 196610, 65525, 65526, 196610, 65525, 65527, 196610, 65525, 65528, 196610, 65525, 65529, 196610, 65525, 65530, 196610, 65525, 65531, 196610, 65526, 65532, 196610, 65526, 65533, 196610, 65526, 65534, 196610, 65526, 65535, 196610, 65525, 65535, 196610, 65525, 65534, 196610, 65525, 65533, 196610, 65525, 65532, 196610, 65526, 65531, 196610, 65526, 65529, 196610, 65526, 65528, 196610, 65526, 65524, 196610, 65526, 65525, 196610, 65526, 65526, 196610, 65526, 65527, 196610, 65526, 65530, 196610, 65527, 65535, 196610, 65527, 65534, 196610, 65527, 65533, 196610, 65527, 65532, 196610, 65527, 65531, 196610, 65527, 65530, 3, 65527, 65529, 3, 65527, 65528, 196610, 65527, 65527, 196610, 65527, 65526, 196610, 65527, 65525, 196610, 65527, 65524, 196610, 65528, 65524, 196610, 65528, 65525, 196610, 65528, 65526, 196610, 65528, 65527, 196610, 65528, 65528, 196610, 65528, 65529, 196610, 65528, 65530, 196610, 65528, 65531, 196610, 65528, 65532, 196610, 65528, 65533, 196610, 65528, 65534, 196610, 65528, 65535, 196610, 65529, 65535, 3, 65529, 65534, 196610, 65529, 65533, 196610, 65529, 65532, 196610, 65529, 65531, 196610, 65529, 65530, 196610, 65529, 65529, 196610, 65529, 65528, 196610, 65529, 65527, 196610, 65529, 65526, 196610, 65529, 65525, 196610, 65529, 65524, 196610, 65530, 65524, 196610, 65530, 65525, 196610, 65530, 65526, 196610, 65530, 65527, 196610, 65530, 65528, 196611, 65530, 65529, 196610, 65530, 65530, 196610, 65530, 65531, 196610, 65530, 65532, 196610, 65530, 65533, 196610, 65530, 65534, 196610, 65530, 65535, 196610, 65531, 65535, 196610, 65531, 65534, 196610, 65531, 65533, 196610, 65531, 65532, 196610, 65531, 65531, 196610, 65531, 65530, 196610, 65531, 65529, 196610, 65531, 65528, 196611, 65531, 65527, 196610, 65531, 65526, 196610, 65531, 65525, 196610, 65531, 65524, 196610, 65532, 65524, 196610, 65534, 65524, 196610, 65534, 65525, 196610, 65533, 65526, 196610, 65533, 65527, 196610, 65532, 65528, 196610, 65532, 65529, 3, 65532, 65527, 196610, 65532, 65526, 196610, 65533, 65524, 196610, 65533, 65525, 196610, 65532, 65525, 196610, 65533, 65528, 196610, 65532, 65530, 3, 65533, 65531, 196610, 65533, 65529, 196610, 65533, 65530, 196610, 65533, 65532, 196610, 65533, 65534, 196610, 65532, 65531, 196610, 65533, 65533, 196610, 65533, 65535, 196610, 65534, 65533, 196610, 65534, 65534, 196610, 65534, 65532, 196610, 65534, 65531, 196610, 65534, 65530, 196610, 65534, 65529, 196610, 65534, 65528, 196610, 65534, 65527, 196610, 65534, 65526, 196610, 65535, 65524, 196610, 65535, 65525, 196610, 65535, 65526, 196610, 65535, 65528, 196610, 65535, 65529, 196610, 65535, 65530, 196610, 65535, 65531, 196610, 65534, 65535, 196610, 65535, 65534, 196610, 65535, 65532, 196610, 65535, 65527, 196610, 65535, 65533, 196610, 0, 65531, 196610, 0, 65530, 196610, 0, 65529, 196610, 0, 65528, 196610, 0, 65527, 196610, 0, 65526, 196610, 0, 65525, 196610, 0, 65524, 196610, 1, 65525, 196610, 1, 65527, 196610, 0, 65532, 196610, 0, 65533, 196610, 1, 65533, 196610, 1, 65532, 196610, 1, 65531, 196610, 1, 65530, 196610, 1, 65529, 196610, 1, 65528, 196610, 1, 65526, 196610, 1, 65524, 196610, 2, 65524, 196610, 2, 65525, 196610, 2, 65526, 196610, 2, 65527, 196610, 2, 65528, 196610, 2, 65529, 196610, 2, 65530, 196610, 2, 65531, 196610, 2, 65532, 196610, 2, 65533, 196610, 2, 65534, 196610, 3, 65534, 196610, 3, 65533, 196610, 3, 65532, 196610, 3, 65531, 196610, 3, 65530, 196610, 3, 65529, 196610, 3, 65528, 196610, 3, 65527, 196610, 3, 65526, 3, 3, 65525, 3, 3, 65524, 196610, 4, 65525, 196610, 4, 65524, 196610, 4, 65526, 196610, 4, 65527, 196610, 4, 65528, 196611, 4, 65529, 196610, 4, 65530, 196610, 4, 65531, 196610, 4, 65532, 196610, 4, 65533, 196610, 4, 65534, 196610, 5, 65533, 196610, 5, 65532, 196610, 5, 65531, 196610, 5, 65530, 196610, 5, 65529, 196610, 5, 65528, 196611, 5, 65527, 196610, 5, 65526, 196610, 5, 65525, 196610, 5, 65524, 196610, 6, 65524, 196610, 7, 65525, 196610, 7, 65526, 196610, 7, 65527, 196610, 7, 65528, 196610, 7, 65530, 196608, 6, 65531, 196608, 6, 65533, 196608, 6, 65534, 196610, 6, 65529, 196610, 7, 65524, 196610, 6, 65525, 196610, 6, 65526, 196610, 6, 65528, 196610, 6, 65530, 196608, 5, 65534, 196610, 6, 65527, 196610, 7, 65531, 196610, 7, 65532, 196610, 7, 65534, 196610, 7, 65535, 196610, 7, 65533, 196608, 8, 65527, 196610, 8, 65528, 196610, 8, 65529, 3, 8, 65531, 196610, 8, 65532, 196610, 8, 65533, 196608, 8, 65526, 196610, 8, 65535, 196610, 8, 65524, 196610, 8, 65525, 196610, 8, 65530, 3, 9, 65529, 196610, 9, 65530, 196610, 9, 65531, 196610, 9, 65532, 196610, 9, 65534, 196610, 9, 65535, 196610, 8, 65534, 196610, 9, 65533, 196610, 9, 65528, 196610, 9, 65527, 196610, 9, 65526, 196610, 9, 65525, 196610, 9, 65524, 196610, 10, 65524, 196610, 10, 65525, 196610, 10, 65526, 196610, 10, 65527, 196610, 10, 65529, 196610, 10, 65530, 196610, 10, 65531, 196610, 10, 65532, 196610, 10, 65533, 196608, 10, 65534, 196610, 10, 65535, 196610, 11, 65533, 196608, 11, 65532, 196610, 11, 65531, 196610, 11, 65530, 196610, 10, 65528, 196610, 11, 65525, 196610, 11, 65526, 196610, 11, 65527, 196610, 11, 65528, 196610, 11, 65529, 196610, 11, 65524, 196610, 11, 65534, 196610, 11, 65535, 196610, 12, 65534, 196610, 12, 65533, 196608, 12, 65532, 196610, 12, 65531, 196610, 12, 65530, 196610, 12, 65529, 196610, 12, 65528, 196610, 12, 65527, 196610, 12, 65526, 196610, 12, 65525, 196610, 12, 65524, 196610, 12, 65535, 196610, 13, 65535, 196610, 13, 65534, 196610, 13, 65533, 196610, 13, 65532, 196610, 13, 65531, 196610, 13, 65530, 196610, 13, 65529, 196610, 13, 65528, 196610, 13, 65527, 196610, 13, 65526, 196610, 13, 65525, 196610, 13, 65524, 196610, 14, 65524, 196610, 14, 65525, 196610, 14, 65526, 196610, 14, 65527, 196610, 14, 65528, 196610, 14, 65529, 196610, 14, 65530, 196610, 14, 65531, 196610, 14, 65532, 196610, 14, 65533, 196608, 14, 65534, 196610, 14, 65535, 196610, 15, 65535, 196610, 15, 65534, 196610, 15, 65533, 196610, 15, 65532, 196608, 15, 65531, 196610, 15, 65530, 3, 15, 65529, 3, 15, 65528, 196610, 15, 65527, 196610, 15, 65526, 196610, 15, 65525, 196610, 15, 65524, 196610, 16, 65524, 196610, 16, 65525, 196610, 16, 65534, 196610, 16, 65535, 196610, 16, 65533, 196610, 16, 65532, 196608, 16, 65531, 196610, 16, 65530, 196610, 16, 65529, 196610, 16, 65527, 196610, 16, 65526, 196610, 1, 65534, 196610, 0, 65534, 196610, 0, 65535, 196610, 65535, 65535, 196610, 1, 65535, 196610, 0, 0, 196611, 65519, 65533, 196610, 6, 65532, 196608, 16, 65528, 196611, 17, 65528, 196611, 65517, 15, 196609, 65518, 15, 196609, 65519, 15, 196609, 65520, 15, 196609, 65521, 15, 196609, 65522, 15, 196609, 65525, 15, 196609, 65524, 15, 196609, 65523, 15, 196609, 65526, 15, 196609, 65527, 15, 196609, 65528, 15, 196609, 65529, 15, 196609, 65531, 15, 196609, 65530, 15, 196609, 65532, 15, 196609, 65533, 15, 196609, 65534, 15, 196609, 65535, 15, 196609, 0, 15, 196609, 1, 15, 196609, 2, 15, 196609, 3, 15, 196609, 4, 15, 196609, 5, 15, 196609, 6, 15, 196609, 7, 15, 196609, 8, 15, 196609, 9, 15, 196609, 10, 15, 196609, 11, 15, 196609, 12, 15, 196609, 13, 15, 196609, 14, 15, 196609, 15, 15, 196609, 16, 15, 196609, 17, 15, 196609, 18, 15, 196609, 65530, 11, 3, 65530, 12, 3)
+}
+
+[node name="MazeGridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("4_cfdf2")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65535, 0, 196610, 65534, 0, 196610, 65533, 0, 196610, 65532, 0, 196610, 65531, 0, 196610, 65530, 0, 196610, 65529, 0, 196610, 65528, 0, 196610, 65527, 0, 196610, 65526, 0, 196610, 65525, 0, 196610, 65524, 0, 196610, 65523, 0, 196610, 65522, 0, 196610, 65521, 0, 196610, 65520, 0, 196610, 65519, 0, 196610, 65517, 0, 196610, 65518, 0, 196610, 65517, 1, 196610, 65517, 2, 196610, 65517, 3, 196610, 65517, 4, 196610, 65517, 5, 196610, 65517, 6, 196610, 65517, 7, 196610, 65517, 8, 196610, 65517, 9, 196610, 65517, 10, 196610, 65517, 11, 196610, 65517, 12, 196610, 65517, 13, 196610, 65517, 14, 196610, 65518, 14, 196610, 65519, 14, 196610, 65520, 14, 196610, 65521, 14, 196610, 65522, 14, 196610, 65523, 14, 196610, 65524, 14, 196610, 65525, 14, 196610, 65526, 14, 196610, 65527, 14, 196610, 65528, 14, 196610, 65529, 14, 196610, 65530, 14, 196610, 65531, 14, 196610, 65532, 14, 196610, 65533, 14, 196610, 65534, 14, 196610, 65535, 14, 196610, 0, 13, 196610, 1, 13, 196610, 0, 14, 196610, 1, 14, 196610, 2, 14, 196610, 3, 14, 196610, 4, 14, 196610, 5, 14, 196610, 6, 14, 196610, 7, 14, 196610, 8, 14, 196610, 9, 14, 196610, 10, 14, 196610, 11, 14, 196610, 12, 14, 196610, 13, 14, 196610, 14, 14, 196610, 15, 14, 196610, 2, 0, 196610, 2, 65535, 196610, 3, 65535, 196610, 4, 65535, 196610, 5, 65535, 196610, 6, 65535, 196610, 7, 0, 196610, 8, 0, 196610, 9, 0, 196610, 10, 0, 196610, 11, 0, 196610, 12, 0, 196610, 13, 0, 196610, 14, 0, 196610, 15, 0, 196610, 15, 1, 196610, 15, 2, 196610, 15, 3, 196610, 15, 4, 196610, 15, 5, 196610, 15, 6, 196610, 15, 7, 196610, 15, 8, 196610, 15, 9, 196610, 15, 10, 196610, 15, 11, 196610, 15, 12, 196610, 15, 13, 196610, 16, 13, 196610, 16, 14, 196610, 16, 12, 196610, 16, 11, 196610, 16, 10, 196610, 16, 9, 196610, 16, 8, 196610, 16, 7, 196610, 16, 6, 196610, 16, 5, 196610, 16, 4, 196610, 16, 3, 196610, 16, 2, 196610, 16, 1, 196610, 16, 0, 196610, 6, 0, 196610, 5, 0, 196610, 4, 0, 196610, 3, 0, 196610, 1, 0, 196610, 3, 1, 196610, 1, 1, 196610, 65535, 1, 196610, 65534, 1, 196610, 0, 1, 196610, 2, 1, 196610, 4, 1, 196610, 5, 1, 196610, 65533, 1, 196610, 65531, 1, 196610, 65530, 1, 196610, 65533, 2, 196610, 0, 2, 196610, 3, 2, 196610, 6, 2, 196610, 7, 2, 196610, 4, 2, 196610, 65531, 2, 196610, 65527, 3, 196610, 65526, 3, 196610, 65525, 3, 196610, 65528, 3, 196610, 65531, 3, 196610, 65535, 3, 196610, 2, 3, 196610, 3, 3, 196610, 4, 3, 196610, 1, 2, 196610, 65535, 2, 196610, 65532, 2, 196610, 65534, 2, 196610, 65529, 1, 196610, 65528, 1, 196610, 65527, 1, 196610, 65528, 2, 196610, 65530, 2, 196610, 65532, 1, 196610, 65529, 2, 196610, 65530, 3, 196610, 65532, 3, 196610, 65533, 3, 196610, 65534, 3, 196610, 1, 3, 196610, 5, 2, 196610, 65526, 2, 196610, 65521, 3, 196610, 65520, 3, 196610, 65519, 3, 196610, 65520, 4, 196610, 65522, 4, 196610, 65525, 4, 196610, 65530, 4, 196610, 0, 4, 196610, 5, 4, 196610, 7, 4, 196610, 7, 3, 196610, 6, 3, 196610, 65531, 5, 196610, 65533, 5, 196610, 65535, 5, 196610, 1, 5, 196610, 3, 5, 196610, 3, 4, 196610, 2, 4, 196610, 65529, 3, 196610, 65529, 4, 196610, 65531, 4, 196610, 65534, 5, 196610, 0, 5, 196610, 4, 5, 196610, 4, 4, 196610, 65534, 4, 196610, 65532, 4, 196610, 65528, 4, 196610, 65526, 4, 196610, 65525, 5, 196610, 65525, 6, 196610, 65526, 6, 196610, 65527, 6, 196610, 14, 13, 196610, 14, 12, 196610, 14, 11, 196610, 14, 10, 196610, 14, 9, 196610, 14, 8, 196610, 14, 7, 196610, 14, 6, 196610, 14, 5, 196610, 14, 4, 196610, 14, 3, 196610, 14, 2, 196610, 14, 1, 196610, 13, 1, 196610, 12, 1, 196610, 11, 1, 196610, 10, 1, 196610, 9, 1, 196610, 8, 1, 196610, 7, 1, 196610, 6, 1, 196610, 8, 2, 196610, 8, 3, 196610, 8, 4, 196610, 8, 5, 196610, 8, 6, 196610, 8, 7, 196610, 8, 8, 196610, 8, 9, 196610, 8, 10, 196610, 8, 11, 196610, 9, 11, 196610, 9, 12, 196610, 10, 12, 196610, 11, 12, 196610, 12, 12, 196610, 13, 12, 196610, 13, 11, 196610, 13, 10, 196610, 13, 9, 196610, 13, 8, 196610, 13, 7, 196610, 13, 6, 196610, 13, 5, 196610, 13, 4, 196610, 13, 3, 196610, 13, 2, 196610, 12, 2, 196610, 11, 2, 196610, 10, 2, 196610, 9, 2, 196610, 9, 9, 196610, 9, 10, 196610, 10, 10, 196610, 10, 11, 196610, 11, 11, 196610, 12, 11, 196610, 12, 10, 196610, 12, 9, 196610, 12, 8, 196610, 12, 7, 196610, 12, 6, 196610, 12, 5, 196610, 12, 4, 196610, 12, 3, 196610, 11, 3, 196610, 10, 3, 196610, 9, 3, 196610, 9, 4, 196610, 9, 5, 196610, 9, 6, 196610, 9, 7, 196610, 9, 8, 196610, 10, 9, 196610, 10, 8, 196610, 10, 6, 196610, 10, 4, 196610, 10, 5, 196610, 10, 7, 196610, 11, 10, 196610, 11, 9, 196610, 11, 8, 196610, 11, 7, 196610, 11, 6, 196610, 11, 5, 196610, 11, 4, 196610, 13, 13, 196610, 12, 13, 196610, 11, 13, 196610, 10, 13, 196610, 9, 13, 196610, 8, 13, 196610, 7, 13, 196610, 6, 13, 196610, 5, 13, 196610, 4, 13, 196610, 3, 13, 196610, 2, 13, 196610, 65535, 13, 196610, 65534, 13, 196610, 65533, 13, 196610, 65532, 13, 196610, 65531, 13, 196610, 65530, 13, 196610, 65529, 13, 196610, 65528, 13, 196610, 65527, 13, 196610, 65526, 13, 196610, 65525, 13, 196610, 65524, 13, 196610, 65523, 13, 196610, 65522, 13, 196610, 65521, 13, 196610, 65520, 13, 196610, 65519, 13, 196610, 65518, 13, 196610, 65518, 9, 196610, 65518, 8, 196610, 65518, 7, 196610, 65518, 6, 196610, 65518, 5, 196610, 65518, 4, 196610, 65518, 3, 196610, 65518, 2, 196610, 65519, 2, 196610, 65519, 1, 196610, 65518, 1, 196610, 65519, 9, 196610, 65519, 10, 196610, 65519, 11, 196610, 65518, 12, 196610, 65518, 10, 196610, 65518, 11, 196610, 65520, 11, 196610, 65521, 11, 196610, 65522, 11, 196610, 65523, 11, 196610, 65524, 11, 196610, 65525, 11, 196610, 65520, 12, 196610, 65519, 12, 196610, 65521, 12, 196610, 65522, 12, 196610, 65526, 11, 196610, 65527, 11, 196610, 65528, 11, 196610, 65529, 11, 196610, 65530, 11, 196610, 65531, 11, 196610, 65523, 12, 196610, 65524, 12, 196610, 65525, 12, 196610, 65526, 12, 196610, 65527, 12, 196610, 65528, 12, 196610, 65532, 11, 196610, 65533, 11, 196610, 65535, 11, 196610, 1, 11, 196610, 3, 11, 196610, 4, 11, 196610, 5, 11, 196610, 2, 12, 196610, 65535, 12, 196610, 65533, 12, 196610, 65532, 12, 196610, 65531, 12, 196610, 65534, 12, 196610, 0, 12, 196610, 1, 12, 196610, 65530, 12, 196610, 65529, 12, 196610, 65534, 11, 196610, 0, 11, 196610, 2, 11, 196610, 6, 11, 196610, 7, 11, 196610, 5, 12, 196610, 3, 12, 196610, 4, 12, 196610, 6, 12, 196610, 7, 12, 196610, 8, 12, 196610, 7, 9, 196610, 7, 8, 196610, 7, 7, 196610, 7, 6, 196610, 7, 10, 196610, 7, 5, 196610, 6, 5, 196610, 6, 6, 196610, 5, 8, 196610, 5, 9, 196610, 5, 10, 196610, 5, 7, 196610, 5, 6, 196610, 5, 3, 196610, 6, 4, 196610, 6, 7, 196610, 6, 8, 196610, 6, 9, 196610, 6, 10, 196610, 5, 5, 196610, 4, 9, 196610, 3, 10, 196610, 3, 8, 196610, 3, 6, 196610, 3, 7, 196610, 3, 9, 196610, 4, 8, 196610, 4, 10, 196610, 4, 7, 196610, 4, 6, 196610, 2, 10, 196610, 2, 9, 196610, 2, 8, 196610, 2, 7, 196610, 2, 6, 196610, 2, 5, 196610, 2, 2, 196610, 1, 4, 196610, 1, 7, 196610, 0, 9, 196610, 0, 10, 196610, 0, 8, 196610, 0, 7, 196610, 0, 6, 196610, 1, 6, 196610, 1, 8, 196610, 1, 9, 196610, 1, 10, 196610, 0, 3, 196610, 65535, 8, 196610, 65534, 10, 196610, 65529, 10, 196610, 65528, 10, 196610, 65530, 9, 196610, 65531, 9, 196610, 65532, 9, 196610, 65533, 8, 196610, 65534, 8, 196610, 65532, 8, 196610, 65531, 8, 196610, 65530, 8, 196610, 65528, 9, 196610, 65526, 9, 196610, 65524, 9, 196610, 65525, 9, 196610, 65527, 9, 196610, 65535, 9, 196610, 65534, 9, 196610, 65533, 9, 196610, 65529, 9, 196610, 65523, 9, 196610, 65522, 9, 196610, 65520, 10, 196610, 65521, 10, 196610, 65522, 10, 196610, 65523, 10, 196610, 65527, 10, 196610, 65525, 10, 196610, 65524, 10, 196610, 65526, 10, 196610, 65532, 10, 196610, 65535, 10, 196610, 65533, 10, 196610, 65531, 10, 196610, 65530, 10, 196610, 65532, 7, 196610, 65532, 6, 196610, 65532, 5, 196610, 65533, 4, 196610, 65534, 6, 196610, 65535, 6, 196610, 65535, 4, 196610, 65535, 7, 196610, 65533, 7, 196610, 65533, 6, 196610, 65534, 7, 196610, 65528, 6, 196610, 65527, 7, 196610, 65527, 8, 196610, 65530, 7, 196610, 65531, 6, 196610, 65531, 7, 196610, 65530, 5, 196610, 65528, 8, 196610, 65529, 7, 196610, 65529, 5, 196610, 65528, 7, 196610, 65530, 6, 196610, 65529, 6, 196610, 65529, 8, 196610, 65526, 8, 196610, 65527, 5, 196610, 65526, 5, 196610, 65524, 5, 196610, 65524, 6, 196610, 65527, 4, 196610, 65528, 5, 196610, 65527, 2, 196610, 65526, 1, 196610, 65524, 1, 196610, 65523, 1, 196610, 65522, 1, 196610, 65521, 1, 196610, 65520, 1, 196610, 65520, 2, 196610, 65521, 4, 196610, 65520, 5, 196610, 65519, 4, 196610, 65519, 5, 196610, 65519, 6, 196610, 65519, 7, 196610, 65519, 8, 196610, 65520, 9, 196610, 65520, 8, 196610, 65520, 7, 196610, 65520, 6, 196610, 65521, 5, 196610, 65521, 6, 196610, 65521, 7, 196610, 65521, 8, 196610, 65522, 7, 196610, 65522, 6, 196610, 65522, 5, 196610, 65521, 9, 196610, 65522, 8, 196610, 65523, 6, 196610, 65523, 7, 196610, 65523, 8, 196610, 65523, 5, 196610, 65524, 8, 196610, 65525, 8, 196610, 65525, 7, 196610, 65526, 7, 196610, 65524, 7, 196610, 65522, 3, 196610, 65522, 2, 196610, 65523, 3, 196610, 65524, 3, 196610, 65523, 2, 196610, 65525, 2, 196610, 65521, 2, 196610, 65524, 4, 196610, 65524, 2, 196610, 65523, 4, 196610, 65525, 1, 196610, 17, 14, 196610, 17, 13, 196610, 17, 12, 196610, 17, 11, 196610, 17, 10, 196610, 17, 9, 196610, 17, 8, 196610, 17, 7, 196610, 17, 6, 196610, 17, 5, 196610, 17, 4, 196610, 17, 3, 196610, 17, 2, 196610, 17, 1, 196610, 17, 0, 196610, 18, 14, 196610, 18, 13, 196610, 18, 12, 196610, 18, 11, 196610, 18, 10, 196610, 18, 9, 196610, 18, 8, 196610, 18, 7, 196610, 18, 6, 196610, 18, 5, 196610, 18, 4, 196610, 18, 3, 196610, 18, 2, 196610, 18, 1, 196610, 18, 0, 196610, 65517, 65534, 196610, 65517, 65533, 196610, 65517, 65532, 196610, 65517, 65531, 196610, 65517, 65530, 196610, 65517, 65529, 196610, 65517, 65528, 196610, 65517, 65527, 196610, 65517, 65526, 196610, 65517, 65525, 196610, 65517, 65524, 196610, 65517, 65523, 196610, 65518, 65529, 196610, 65518, 65530, 196610, 65518, 65531, 196610, 65518, 65532, 196610, 65518, 65533, 196610, 65517, 65535, 196610, 65518, 65523, 196610, 65519, 65523, 196610, 65520, 65523, 196610, 65522, 65523, 196610, 65524, 65523, 196610, 65525, 65523, 196610, 65527, 65523, 196610, 65528, 65523, 196610, 65529, 65523, 196610, 65530, 65523, 196610, 65531, 65523, 196610, 65532, 65523, 196610, 65533, 65523, 196610, 65534, 65523, 196610, 65535, 65523, 196610, 0, 65523, 196610, 65531, 65522, 196610, 65530, 65522, 196610, 65529, 65522, 196610, 65528, 65522, 196610, 65527, 65522, 196610, 65526, 65522, 196610, 65523, 65523, 196610, 65521, 65523, 196610, 65520, 65522, 196610, 65519, 65522, 196610, 65517, 65522, 196610, 65518, 65522, 196610, 65521, 65522, 196610, 65522, 65522, 196610, 65523, 65522, 196610, 65524, 65522, 196610, 65525, 65522, 196610, 65526, 65523, 196610, 65532, 65522, 196610, 65531, 65521, 196610, 65533, 65522, 196610, 65534, 65522, 196610, 65535, 65522, 196610, 0, 65522, 196610, 65535, 65521, 196610, 0, 65521, 196610, 65534, 65521, 196610, 65533, 65521, 196610, 65532, 65521, 196610, 65530, 65521, 196610, 65529, 65521, 196610, 65528, 65521, 196610, 65527, 65521, 196610, 65526, 65521, 196610, 65525, 65521, 196610, 65524, 65521, 196610, 65523, 65521, 196610, 65522, 65521, 196610, 65521, 65521, 196610, 65520, 65521, 196610, 65519, 65521, 196610, 65518, 65521, 196610, 65517, 65521, 196610, 1, 65521, 196610, 2, 65521, 196610, 3, 65521, 196610, 4, 65521, 196610, 5, 65521, 196610, 6, 65521, 196610, 7, 65521, 196610, 8, 65521, 196610, 9, 65521, 196610, 10, 65521, 196610, 11, 65521, 196610, 12, 65521, 196610, 13, 65521, 196610, 14, 65521, 196610, 15, 65521, 196610, 16, 65521, 196610, 17, 65521, 196610, 17, 65522, 196610, 17, 65523, 196610, 17, 65524, 196610, 17, 65525, 196610, 17, 65526, 196610, 17, 65527, 196610, 17, 65528, 196610, 17, 65529, 196610, 17, 65530, 196610, 17, 65531, 196610, 17, 65532, 196610, 17, 65533, 196610, 17, 65534, 196610, 17, 65535, 196610, 18, 65535, 196610, 18, 65534, 196610, 18, 65533, 196610, 18, 65532, 196610, 18, 65531, 196610, 18, 65524, 196610, 18, 65526, 196610, 18, 65527, 196610, 18, 65528, 196610, 18, 65529, 196610, 18, 65530, 196610, 18, 65522, 196610, 18, 65523, 196610, 18, 65521, 196610, 18, 65525, 196610, 1, 65523, 196610, 3, 65523, 196610, 4, 65523, 196610, 5, 65523, 196610, 6, 65523, 196610, 7, 65523, 196610, 8, 65523, 196610, 9, 65523, 196610, 10, 65523, 196610, 11, 65523, 196610, 12, 65523, 196610, 13, 65523, 196610, 14, 65523, 196610, 15, 65523, 196610, 16, 65523, 196610, 16, 65522, 196610, 15, 65522, 196610, 14, 65522, 196610, 13, 65522, 196610, 12, 65522, 196610, 11, 65522, 196610, 10, 65522, 196610, 9, 65522, 196610, 8, 65522, 196610, 7, 65522, 196610, 6, 65522, 196610, 5, 65522, 196610, 4, 65522, 196610, 3, 65522, 196610, 2, 65522, 196610, 1, 65522, 196610, 2, 65523, 196610, 65517, 65520, 196610, 65518, 65520, 196610, 65519, 65520, 196610, 65520, 65520, 196610, 65521, 65520, 196610, 65522, 65520, 196610, 65523, 65520, 196610, 65524, 65520, 196610, 65525, 65520, 196610, 65526, 65520, 196610, 65527, 65520, 196610, 65528, 65520, 196610, 65529, 65520, 196610, 65530, 65520, 196610, 65531, 65520, 196610, 65532, 65520, 196610, 65533, 65520, 196610, 65534, 65520, 196610, 65535, 65520, 196610, 0, 65520, 196610, 1, 65520, 196610, 2, 65520, 196610, 3, 65520, 196610, 4, 65520, 196610, 5, 65520, 196610, 6, 65520, 196610, 7, 65520, 196610, 8, 65520, 196610, 9, 65520, 196610, 10, 65520, 196610, 11, 65520, 196610, 12, 65520, 196610, 13, 65520, 196610, 14, 65520, 196610, 15, 65520, 196610, 16, 65520, 196610, 17, 65520, 196610, 18, 65520, 196610, 65518, 65526, 196610, 65518, 65527, 196610, 65518, 65528, 196610, 65518, 65534, 196610, 65519, 65534, 196610, 65519, 65533, 196610, 65519, 65532, 196610, 65519, 65531, 196610, 65518, 65524, 196610, 65518, 65535, 196610, 65519, 65535, 196610, 65519, 65530, 196610, 65519, 65529, 196610, 65519, 65528, 196610, 65519, 65527, 196610, 65519, 65526, 196610, 65519, 65525, 196610, 65519, 65524, 196610, 65518, 65525, 196610, 65520, 65524, 196610, 65520, 65525, 196610, 65520, 65526, 196610, 65520, 65527, 196610, 65520, 65528, 196610, 65520, 65529, 196610, 65520, 65530, 196610, 65520, 65531, 196610, 65520, 65532, 196610, 65520, 65533, 196610, 65520, 65534, 196610, 65520, 65535, 196610, 65521, 65535, 196610, 65521, 65534, 196610, 65521, 65533, 196610, 65521, 65532, 196610, 65521, 65531, 196610, 65521, 65529, 196610, 65521, 65528, 196610, 65521, 65527, 196610, 65521, 65526, 196610, 65521, 65525, 196610, 65521, 65524, 196610, 65522, 65524, 196610, 65522, 65525, 196610, 65522, 65526, 196610, 65521, 65530, 196610, 65522, 65531, 196610, 65522, 65532, 196610, 65522, 65530, 196610, 65522, 65529, 196610, 65522, 65527, 196610, 65522, 65528, 196610, 65522, 65533, 196610, 65522, 65534, 196610, 65522, 65535, 196610, 65523, 65533, 196610, 65523, 65532, 196610, 65523, 65531, 196610, 65523, 65530, 196610, 65523, 65529, 196610, 65523, 65528, 196610, 65523, 65527, 196610, 65523, 65526, 196610, 65523, 65525, 196610, 65523, 65524, 196610, 65523, 65534, 196610, 65523, 65535, 196610, 65524, 65535, 196610, 65524, 65534, 196610, 65524, 65533, 196610, 65524, 65532, 196610, 65524, 65531, 196610, 65524, 65530, 196610, 65524, 65529, 196610, 65524, 65528, 196610, 65524, 65527, 196610, 65524, 65526, 196610, 65524, 65525, 196610, 65524, 65524, 196610, 65525, 65524, 196610, 65525, 65525, 196610, 65525, 65526, 196610, 65525, 65527, 196610, 65525, 65528, 196610, 65525, 65529, 196610, 65525, 65530, 196610, 65525, 65531, 196610, 65526, 65532, 196610, 65526, 65533, 196610, 65526, 65534, 196610, 65526, 65535, 196610, 65525, 65535, 196610, 65525, 65534, 196610, 65525, 65533, 196610, 65525, 65532, 196610, 65526, 65531, 196610, 65526, 65529, 196610, 65526, 65528, 196610, 65526, 65524, 196610, 65526, 65525, 196610, 65526, 65526, 196610, 65526, 65527, 196610, 65526, 65530, 196610, 65527, 65535, 196610, 65527, 65534, 196610, 65527, 65533, 196610, 65527, 65532, 196610, 65527, 65531, 196610, 65527, 65530, 196610, 65527, 65529, 196610, 65527, 65528, 196610, 65527, 65527, 196610, 65527, 65526, 196610, 65527, 65525, 196610, 65527, 65524, 196610, 65528, 65524, 196610, 65528, 65525, 196610, 65528, 65526, 196610, 65528, 65527, 196610, 65528, 65528, 196610, 65528, 65529, 196610, 65528, 65530, 196610, 65528, 65531, 196610, 65528, 65532, 196610, 65528, 65533, 196610, 65528, 65534, 196610, 65528, 65535, 196610, 65529, 65535, 196610, 65529, 65534, 196610, 65529, 65533, 196610, 65529, 65532, 196610, 65529, 65531, 196610, 65529, 65530, 196610, 65529, 65529, 196610, 65529, 65528, 196610, 65529, 65527, 196610, 65529, 65526, 196610, 65529, 65525, 196610, 65529, 65524, 196610, 65530, 65524, 196610, 65530, 65525, 196610, 65530, 65526, 196610, 65530, 65527, 196610, 65530, 65528, 196610, 65530, 65529, 196610, 65530, 65530, 196610, 65530, 65531, 196610, 65530, 65532, 196610, 65530, 65533, 196610, 65530, 65534, 196610, 65530, 65535, 196610, 65531, 65535, 196610, 65531, 65534, 196610, 65531, 65533, 196610, 65531, 65532, 196610, 65531, 65531, 196610, 65531, 65530, 196610, 65531, 65529, 196610, 65531, 65528, 196610, 65531, 65527, 196610, 65531, 65526, 196610, 65531, 65525, 196610, 65531, 65524, 196610, 65532, 65524, 196610, 65534, 65524, 196610, 65534, 65525, 196610, 65533, 65526, 196610, 65533, 65527, 196610, 65532, 65528, 196610, 65532, 65529, 196610, 65532, 65527, 196610, 65532, 65526, 196610, 65533, 65524, 196610, 65533, 65525, 196610, 65532, 65525, 196610, 65533, 65528, 196610, 65532, 65530, 196610, 65532, 65532, 196610, 65532, 65534, 196610, 65533, 65531, 196610, 65533, 65529, 196610, 65533, 65530, 196610, 65533, 65532, 196610, 65533, 65534, 196610, 65532, 65535, 196610, 65532, 65533, 196610, 65532, 65531, 196610, 65533, 65533, 196610, 65533, 65535, 196610, 65534, 65533, 196610, 65534, 65534, 196610, 65534, 65532, 196610, 65534, 65531, 196610, 65534, 65530, 196610, 65534, 65529, 196610, 65534, 65528, 196610, 65534, 65527, 196610, 65534, 65526, 196610, 65535, 65524, 196610, 65535, 65525, 196610, 65535, 65526, 196610, 65535, 65528, 196610, 65535, 65529, 196610, 65535, 65530, 196610, 65535, 65531, 196610, 65534, 65535, 196610, 65535, 65534, 196610, 65535, 65532, 196610, 65535, 65527, 196610, 65535, 65533, 196610, 0, 65531, 196610, 0, 65530, 196610, 0, 65529, 196610, 0, 65528, 196610, 0, 65527, 196610, 0, 65526, 196610, 0, 65525, 196610, 0, 65524, 196610, 1, 65525, 196610, 1, 65527, 196610, 0, 65532, 196610, 0, 65533, 196610, 1, 65533, 196610, 1, 65532, 196610, 1, 65531, 196610, 1, 65530, 196610, 1, 65529, 196610, 1, 65528, 196610, 1, 65526, 196610, 1, 65524, 196610, 2, 65524, 196610, 2, 65525, 196610, 2, 65526, 196610, 2, 65527, 196610, 2, 65528, 196610, 2, 65529, 196610, 2, 65530, 196610, 2, 65531, 196610, 2, 65532, 196610, 2, 65533, 196610, 2, 65534, 196610, 3, 65534, 196610, 3, 65533, 196610, 3, 65532, 196610, 3, 65531, 196610, 3, 65530, 196610, 3, 65529, 196610, 3, 65528, 196610, 3, 65527, 196610, 3, 65526, 196610, 3, 65525, 196610, 3, 65524, 196610, 4, 65525, 196610, 4, 65524, 196610, 4, 65526, 196610, 4, 65527, 196610, 4, 65528, 196610, 4, 65529, 196610, 4, 65530, 196610, 4, 65531, 196610, 4, 65532, 196610, 4, 65533, 196610, 4, 65534, 196610, 5, 65533, 196610, 5, 65532, 196610, 5, 65531, 196610, 5, 65530, 196610, 5, 65529, 196610, 5, 65528, 196610, 5, 65527, 196610, 5, 65526, 196610, 5, 65525, 196610, 5, 65524, 196610, 6, 65524, 196610, 7, 65525, 196610, 7, 65526, 196610, 7, 65527, 196610, 7, 65528, 196610, 7, 65529, 196610, 7, 65530, 196610, 6, 65531, 196610, 6, 65532, 196610, 6, 65533, 196610, 6, 65534, 196610, 6, 65529, 196610, 7, 65524, 196610, 6, 65525, 196610, 6, 65526, 196610, 6, 65528, 196610, 6, 65530, 196610, 5, 65534, 196610, 6, 65527, 196610, 7, 65531, 196610, 7, 65532, 196610, 7, 65534, 196610, 7, 65535, 196610, 7, 65533, 196610, 8, 65527, 196610, 8, 65528, 196610, 8, 65529, 196610, 8, 65531, 196610, 8, 65532, 196610, 8, 65533, 196610, 8, 65526, 196610, 8, 65535, 196610, 8, 65524, 196610, 8, 65525, 196610, 8, 65530, 196610, 9, 65529, 196610, 9, 65530, 196610, 9, 65531, 196610, 9, 65532, 196610, 9, 65534, 196610, 9, 65535, 196610, 8, 65534, 196610, 9, 65533, 196610, 9, 65528, 196610, 9, 65527, 196610, 9, 65526, 196610, 9, 65525, 196610, 9, 65524, 196610, 10, 65524, 196610, 10, 65525, 196610, 10, 65526, 196610, 10, 65527, 196610, 10, 65529, 196610, 10, 65530, 196610, 10, 65531, 196610, 10, 65532, 196610, 10, 65533, 196610, 10, 65534, 196610, 10, 65535, 196610, 11, 65533, 196610, 11, 65532, 196610, 11, 65531, 196610, 11, 65530, 196610, 10, 65528, 196610, 11, 65525, 196610, 11, 65526, 196610, 11, 65527, 196610, 11, 65528, 196610, 11, 65529, 196610, 11, 65524, 196610, 11, 65534, 196610, 11, 65535, 196610, 12, 65534, 196610, 12, 65533, 196610, 12, 65532, 196610, 12, 65531, 196610, 12, 65530, 196610, 12, 65529, 196610, 12, 65528, 196610, 12, 65527, 196610, 12, 65526, 196610, 12, 65525, 196610, 12, 65524, 196610, 12, 65535, 196610, 13, 65535, 196610, 13, 65534, 196610, 13, 65533, 196610, 13, 65532, 196610, 13, 65531, 196610, 13, 65530, 196610, 13, 65529, 196610, 13, 65528, 196610, 13, 65527, 196610, 13, 65526, 196610, 13, 65525, 196610, 13, 65524, 196610, 14, 65524, 196610, 14, 65525, 196610, 14, 65526, 196610, 14, 65527, 196610, 14, 65528, 196610, 14, 65529, 196610, 14, 65530, 196610, 14, 65531, 196610, 14, 65532, 196610, 14, 65533, 196610, 14, 65534, 196610, 14, 65535, 196610, 15, 65535, 196610, 15, 65534, 196610, 15, 65533, 196610, 15, 65532, 196610, 15, 65531, 196610, 15, 65530, 196610, 15, 65529, 196610, 15, 65528, 196610, 15, 65527, 196610, 15, 65526, 196610, 15, 65525, 196610, 15, 65524, 196610, 16, 65524, 196610, 16, 65525, 196610, 16, 65534, 196610, 16, 65535, 196610, 16, 65533, 196610, 16, 65532, 196610, 16, 65531, 196610, 16, 65530, 196610, 16, 65529, 196610, 16, 65528, 196610, 16, 65527, 196610, 16, 65526, 196610, 1, 65534, 196610, 0, 65534, 196610, 0, 65535, 196610, 65535, 65535, 196610, 1, 65535, 196610, 0, 0, 196610, 65554, 65520, 196609, 65554, 65521, 196609, 65554, 65522, 196609, 65554, 65523, 196609, 65554, 65524, 196609, 65554, 65525, 196609, 65554, 65526, 196609, 65554, 65527, 196609, 65554, 65528, 196609, 65554, 65529, 196609, 65554, 65530, 196609, 65554, 65531, 196609, 65554, 65532, 196609, 65554, 65533, 196609, 65554, 65534, 196609, 65554, 65535, 196609, 65554, 0, 196609, 65554, 1, 196609, 65554, 2, 196609, 65554, 3, 196609, 65554, 4, 196609, 65554, 5, 196609, 65554, 6, 196609, 65554, 7, 196609, 65554, 8, 196609, 65554, 9, 196609, 65554, 10, 196609, 65554, 11, 196609, 65554, 12, 196609, 65554, 13, 196609, 65554, 14, 196609, 131053, 65520, 196609, 131054, 65520, 196609, 131055, 65520, 196609, 131056, 65520, 196609, 131057, 65520, 196609, 131058, 65520, 196609, 131059, 65520, 196609, 131060, 65520, 196609, 131061, 65520, 196609, 131062, 65520, 196609, 131063, 65520, 196609, 131064, 65520, 196609, 131065, 65520, 196609, 131066, 65520, 196609, 131067, 65520, 196609, 131068, 65520, 196609, 131069, 65520, 196609, 131070, 65520, 196609, 131071, 65520, 196609, 65536, 65520, 196609, 65537, 65520, 196609, 65538, 65520, 196609, 65539, 65520, 196609, 65540, 65520, 196609, 65541, 65520, 196609, 65542, 65520, 196609, 65543, 65520, 196609, 65544, 65520, 196609, 65545, 65520, 196609, 65546, 65520, 196609, 65547, 65520, 196609, 65548, 65520, 196609, 65549, 65520, 196609, 65550, 65520, 196609, 65551, 65520, 196609, 65552, 65520, 196609, 65553, 65520, 196609, 131053, 14, 196609, 131053, 13, 196609, 131053, 12, 196609, 131053, 11, 196609, 131053, 10, 196609, 131053, 9, 196609, 131053, 8, 196609, 131053, 7, 196609, 131053, 6, 196609, 131053, 5, 196609, 131053, 4, 196609, 131053, 3, 196609, 131053, 2, 196609, 131053, 1, 196609, 131053, 0, 196609, 131053, 65535, 196609, 131053, 65534, 196609, 131053, 65533, 196609, 131053, 65532, 196609, 131053, 65531, 196609, 131053, 65530, 196609, 131053, 65529, 196609, 131053, 65528, 196609, 131053, 65527, 196609, 131053, 65526, 196609, 131053, 65525, 196609, 131053, 65524, 196609, 131053, 65523, 196609, 131053, 65522, 196609, 131053, 65521, 196609, 131053, 15, 196609, 131054, 15, 196609, 131055, 15, 196609, 131056, 15, 196609, 131057, 15, 196609, 131058, 15, 196609, 131059, 15, 196609, 131060, 15, 196609, 131061, 15, 196609, 131062, 15, 196609, 131063, 15, 196609, 131064, 15, 196609, 131065, 15, 196609, 131066, 15, 196609, 131067, 15, 196609, 131068, 15, 196609, 131069, 15, 196609, 131070, 15, 196609, 131071, 15, 196609, 65536, 15, 196609, 65537, 15, 196609, 65538, 15, 196609, 65539, 15, 196609, 65540, 15, 196609, 65541, 15, 196609, 65542, 15, 196609, 65543, 15, 196609, 65544, 15, 196609, 65545, 15, 196609, 65546, 15, 196609, 65547, 15, 196609, 65548, 15, 196609, 65549, 15, 196609, 65550, 15, 196609, 65551, 15, 196609, 65552, 15, 196609, 65553, 15, 196609, 65554, 15, 196609, 131056, 65523, 196609, 131057, 65523, 196609, 131058, 65523, 196609, 131056, 65524, 196609, 131056, 65525, 196609, 131057, 65525, 196609, 131058, 65525, 196609, 131058, 65524, 196609, 131057, 65524, 196609, 65549, 65523, 196609, 65549, 65524, 196609, 65550, 65524, 196609, 65550, 65523, 196609, 65551, 65523, 196609, 65551, 65524, 196609, 65551, 65525, 196609, 65550, 65525, 196609, 65549, 65525, 196609, 131061, 65523, 196609, 131061, 65524, 196609, 131061, 65525, 196609, 131062, 65525, 196609, 131063, 65525, 196609, 131064, 65525, 196609, 131065, 65525, 196609, 131065, 65524, 196609, 131065, 65523, 196609, 131064, 65523, 196609, 131063, 65523, 196609, 131062, 65523, 196609, 131062, 65524, 196609, 131063, 65524, 196609, 131064, 65524, 196609, 65546, 65523, 196609, 65546, 65524, 196609, 65546, 65525, 196609, 65545, 65525, 196609, 65544, 65525, 196609, 65543, 65525, 196609, 65543, 65524, 196609, 65543, 65523, 196609, 65544, 65523, 196609, 65545, 65523, 196609, 65544, 65524, 196609, 65545, 65524, 196609, 65542, 65524, 196609, 65542, 65523, 196609, 65542, 65525, 196609, 131068, 65523, 196609, 131068, 65525, 196609, 131068, 65526, 196609, 131068, 65524, 196609, 65539, 65521, 196609, 65539, 65522, 196609, 65539, 65523, 196609, 65539, 65524, 196609, 131071, 65525, 196609, 131071, 65524, 196609, 131071, 65523, 196609, 65536, 65523, 196609, 65536, 65524, 196609, 65536, 65525, 196609, 65536, 65526, 196609, 131071, 65526, 196609, 131071, 65527, 196609, 131071, 65528, 196609, 131071, 65529, 196609, 65536, 65529, 196609, 65536, 65528, 196609, 65536, 65527, 196609, 65539, 65528, 196609, 65539, 65529, 196609, 65539, 65530, 196609, 65539, 65531, 196609, 65538, 65531, 196609, 131068, 65528, 196609, 131068, 65531, 196609, 131069, 65531, 196609, 131070, 65531, 196609, 131071, 65531, 196609, 65536, 65531, 196609, 65537, 65531, 196609, 131056, 65528, 196609, 131057, 65528, 196609, 131058, 65528, 196609, 131059, 65528, 196609, 131060, 65528, 196609, 131061, 65528, 196609, 131062, 65528, 196609, 131063, 65528, 196609, 131064, 65528, 196609, 131065, 65528, 196609, 65542, 65528, 196609, 65543, 65528, 196609, 65544, 65528, 196609, 65545, 65528, 196609, 65546, 65528, 196609, 65547, 65528, 196609, 65548, 65528, 196609, 65549, 65528, 196609, 65550, 65528, 196609, 65551, 65528, 196609, 65547, 65524, 196609, 65548, 65524, 196609, 131056, 12, 196609, 131057, 12, 196609, 131056, 11, 196609, 131057, 11, 196609, 131058, 11, 196609, 131059, 11, 196609, 131060, 11, 196609, 131058, 12, 196609, 131059, 12, 196609, 131060, 12, 196609, 131061, 12, 196609, 131062, 12, 196609, 131063, 12, 196609, 131063, 11, 196609, 131062, 11, 196609, 131061, 11, 196609, 131058, 10, 196609, 131059, 10, 196609, 131059, 9, 196609, 131058, 9, 196609, 131054, 7, 196609, 131054, 8, 196609, 131055, 8, 196609, 131055, 7, 196609, 131055, 6, 196609, 131055, 5, 196609, 131055, 4, 196609, 131054, 4, 196609, 131054, 3, 196609, 131054, 5, 196609, 131054, 6, 196609, 131055, 3, 196609, 131056, 5, 196609, 131057, 5, 196609, 131057, 4, 196609, 131056, 4, 196609, 131058, 5, 196609, 131059, 5, 196609, 131059, 4, 196609, 131058, 4, 196609, 131055, 2, 196609, 131055, 1, 196609, 131054, 1, 196609, 131054, 2, 196609, 131062, 7, 196609, 131062, 8, 196609, 131063, 8, 196609, 131063, 7, 196609, 131063, 6, 196609, 131062, 6, 196609, 131068, 65527, 196609, 65539, 65527, 196609, 131056, 65529, 196609, 131056, 65530, 196609, 131056, 65531, 196609, 131056, 65532, 196609, 131056, 65533, 196609, 131056, 65534, 196609, 131057, 65534, 196609, 131058, 65534, 196609, 131058, 1, 196609, 131059, 1, 196609, 131060, 1, 196609, 131061, 1, 196609, 131062, 1, 196609, 131062, 2, 196609, 131062, 3, 196609, 131059, 65531, 196609, 131060, 65531, 196609, 131061, 65531, 196609, 131061, 65532, 196609, 131061, 65533, 196609, 131061, 65534, 196609, 131062, 65531, 196609, 131063, 65531, 196609, 131064, 65533, 196609, 131064, 65534, 196609, 131065, 65534, 196609, 131065, 65533, 196609, 65551, 65531, 196609, 65550, 65531, 196609, 65549, 65531, 196609, 65549, 65532, 196609, 65549, 65533, 196609, 65549, 65534, 196609, 65550, 65534, 196609, 65550, 65533, 196609, 65550, 65532, 196609, 65551, 65532, 196609, 65546, 65531, 196609, 65545, 65531, 196609, 65544, 65531, 196609, 65544, 65532, 196609, 65545, 65532, 196609, 65546, 65532, 196609, 65546, 65533, 196609, 65546, 65534, 196609, 65545, 65534, 196609, 65545, 65533, 196609, 65544, 1, 196609, 65548, 1, 196609, 65551, 1, 196609, 65547, 1, 196609, 65544, 2, 196609, 65544, 3, 196609, 65544, 4, 196609, 65545, 4, 196609, 65546, 4, 196609, 65551, 2, 196609, 65551, 3, 196609, 65551, 4, 196609, 65550, 4, 196609, 65549, 4, 196609, 65546, 5, 196609, 65549, 5, 196609, 65543, 1, 196609, 65542, 1, 196609, 65541, 1, 196609, 65541, 2, 196609, 65541, 3, 196609, 65552, 4, 196609, 65553, 4, 196609, 65550, 12, 196609, 65551, 12, 196609, 65551, 11, 196609, 65551, 10, 196609, 65551, 9, 196609, 65551, 8, 196609, 65550, 8, 196609, 65550, 9, 196609, 65550, 10, 196609, 65550, 11, 196609, 65553, 5, 196609, 65552, 5, 196609, 131054, 65525, 196609, 131055, 65525, 196609, 131063, 3, 196609, 131064, 3, 196609, 131065, 3, 196609, 131065, 2, 196609, 131065, 1, 196609, 131066, 1, 196609, 131067, 1, 196609, 131067, 2, 196609, 131066, 2, 196609, 131066, 3, 196609, 131067, 3, 196609, 65537, 65534, 196609, 65536, 65534, 196609, 131071, 65534, 196609, 131070, 65534, 196609, 131070, 65535, 196609, 131070, 0, 196609, 65537, 65535, 196609, 65537, 0, 196609, 131071, 65532, 196609, 131071, 65533, 196609, 65536, 65533, 196609, 65536, 65532, 196609, 131066, 6, 196609, 131066, 7, 196609, 131067, 7, 196609, 131068, 7, 196609, 131069, 7, 196609, 131070, 7, 196609, 131070, 6, 196609, 131069, 6, 196609, 131068, 6, 196609, 131067, 6, 196609, 131068, 8, 196609, 131068, 9, 196609, 131068, 10, 196609, 131067, 10, 196609, 131066, 10, 196609, 131066, 13, 196609, 131066, 14, 196609, 131069, 10, 196609, 131070, 10, 196609, 131071, 10, 196609, 131069, 11, 196609, 131069, 12, 196609, 65536, 14, 196609, 65536, 13, 196609, 65536, 10, 196609, 65537, 10, 196609, 65538, 10, 196609, 65539, 10, 196609, 65539, 11, 196609, 65539, 12, 196609, 65542, 14, 196609, 65542, 13, 196609, 65542, 12, 196609, 65542, 11, 196609, 65542, 10, 196609, 65543, 10, 196609, 65543, 11, 196609, 65543, 12, 196609, 65543, 13, 196609, 65543, 14, 196609, 65544, 12, 196609, 65545, 12, 196609, 65545, 11, 196609, 65544, 11, 196609, 65543, 9, 196609, 65542, 9, 196609, 65537, 6, 196609, 65537, 7, 196609, 65538, 7, 196609, 65538, 6, 196609, 65540, 1, 196609, 65540, 2, 196609, 65540, 3, 196609, 65540, 7, 196609, 65540, 6, 196609, 65541, 6, 196609, 65541, 7, 196609, 65546, 8, 196609, 65547, 8, 196609, 65548, 8, 196609, 65549, 8, 196609, 65549, 11, 196609, 65548, 11, 196609, 196589, 65520, 196609, 196590, 65520, 196609, 196595, 65520, 196609, 196600, 65520, 196609, 196605, 65520, 196609, 131073, 65520, 196609, 131077, 65520, 196609, 131078, 65520, 196609, 131079, 65520, 196609, 131080, 65520, 196609, 131081, 65520, 196609, 131082, 65520, 196609, 131083, 65520, 196609, 131084, 65520, 196609, 131085, 65520, 196609, 131086, 65520, 196609, 131087, 65520, 196609, 131088, 65520, 196609, 131089, 65520, 196609, 131090, 65520, 196609, 196589, 15, 196609, 196589, 14, 196609, 196589, 13, 196609, 196589, 12, 196609, 196589, 11, 196609, 196589, 10, 196609, 196589, 9, 196609, 196589, 8, 196609, 196589, 7, 196609, 196589, 6, 196609, 196589, 5, 196609, 196589, 4, 196609, 196589, 3, 196609, 196589, 2, 196609, 196589, 1, 196609, 196589, 0, 196609, 196589, 65535, 196609, 196589, 65534, 196609, 196589, 65533, 196609, 196589, 65532, 196609, 196589, 65531, 196609, 196589, 65530, 196609, 196589, 65529, 196609, 196589, 65528, 196609, 196589, 65527, 196609, 196589, 65526, 196609, 196589, 65525, 196609, 196589, 65524, 196609, 196589, 65523, 196609, 131090, 15, 196609, 131090, 65521, 196609, 131090, 65522, 196609, 131090, 65523, 196609, 131090, 65524, 196609, 131090, 65525, 196609, 131090, 65526, 196609, 131090, 65527, 196609, 131090, 65528, 196609, 131090, 65529, 196609, 131090, 65530, 196609, 131090, 65531, 196609, 131090, 65532, 196609, 131090, 65533, 196609, 131090, 65534, 196609, 131090, 65535, 196609, 131090, 0, 196609, 131090, 1, 196609, 131090, 2, 196609, 131090, 3, 196609, 131090, 4, 196609, 131090, 5, 196609, 131090, 6, 196609, 131090, 7, 196609, 131090, 8, 196609, 131090, 9, 196609, 131090, 10, 196609, 131090, 11, 196609, 131090, 12, 196609, 131090, 13, 196609, 196589, 65522, 196609, 196589, 65521, 196609, 131090, 14, 196609, 196604, 65520, 196609, 196591, 65520, 196609, 196592, 65520, 196609, 196593, 65520, 196609, 196594, 65520, 196609, 196596, 65520, 196609, 196597, 65520, 196609, 196598, 65520, 196609, 196599, 65520, 196609, 196602, 65520, 196609, 196601, 65520, 196609, 131072, 65520, 196609, 131075, 65520, 196609, 196607, 65520, 196609, 196606, 65520, 196609, 196603, 65520, 196609, 131074, 65520, 196609, 131076, 65520, 196609)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("5_4hbk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.95477, 2.11107, 10.0144)
+
+[node name="pathE2" type="AnimationPlayer" parent="Enemies/Enemy2"]
+autoplay = "path"
+libraries = {
+"": SubResource("AnimationLibrary_iimvn")
+}
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("5_4hbk7")]
+transform = Transform3D(-1, 2.19553e-06, 1.26759e-06, 0, 0.499998, -0.866026, -2.53518e-06, -0.866026, -0.499998, 4.93917, 2.11107, -14.0792)
+
+[node name="pathE3" type="AnimationPlayer" parent="Enemies/Enemy3"]
+autoplay = "path"
+libraries = {
+"": SubResource("AnimationLibrary_fddne")
+}
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("5_4hbk7")]
+transform = Transform3D(-1, 2.19553e-06, 1.26759e-06, 0, 0.499998, -0.866026, -2.53518e-06, -0.866026, -0.499998, -11.9945, 2.11107, -3.03608)
+
+[node name="pathE4" type="AnimationPlayer" parent="Enemies/Enemy4"]
+autoplay = "path"
+libraries = {
+"": SubResource("AnimationLibrary_wlq3u")
+}
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("5_4hbk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9895, 2.11107, -12.0905)
+
+[node name="pathE5" type="AnimationPlayer" parent="Enemies/Enemy5"]
+autoplay = "path"
+libraries = {
+"": SubResource("AnimationLibrary_2j7o7")
+}
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("5_4hbk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9524, 2.11107, -6.07187)
+
+[node name="path" type="AnimationPlayer" parent="Enemies/Enemy6"]
+autoplay = "path"
+libraries = {
+"": SubResource("AnimationLibrary_04jy2")
+}
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("5_4hbk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0109, 2.11107, 10.0144)
+
+[node name="pathE1" type="AnimationPlayer" parent="Enemies/Enemy1"]
+autoplay = "path"
+libraries = {
+"": SubResource("AnimationLibrary_pj75i")
+}
+
+[connection signal="CoinCollected" from="Coins/CoinHolder1/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder1/Coin" to="Coins/CoinHolder1/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder149/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder149/Coin" to="Coins/CoinHolder149/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder150/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder150/Coin" to="Coins/CoinHolder150/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder2/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder2/Coin" to="Coins/CoinHolder2/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder3/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder3/Coin" to="Coins/CoinHolder3/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder4/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder4/Coin" to="Coins/CoinHolder4/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder5/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder5/Coin" to="Coins/CoinHolder5/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder6/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder6/Coin" to="Coins/CoinHolder6/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder7/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder7/Coin" to="Coins/CoinHolder7/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder8/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder8/Coin" to="Coins/CoinHolder8/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder9/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder9/Coin" to="Coins/CoinHolder9/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder10/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder10/Coin" to="Coins/CoinHolder10/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder11/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder11/Coin" to="Coins/CoinHolder11/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder12/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder12/Coin" to="Coins/CoinHolder12/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder13/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder13/Coin" to="Coins/CoinHolder13/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder14/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder14/Coin" to="Coins/CoinHolder14/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder15/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder15/Coin" to="Coins/CoinHolder15/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder16/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder16/Coin" to="Coins/CoinHolder16/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder17/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder17/Coin" to="Coins/CoinHolder17/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder18/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder18/Coin" to="Coins/CoinHolder18/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder19/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder19/Coin" to="Coins/CoinHolder19/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder20/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder20/Coin" to="Coins/CoinHolder20/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder21/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder21/Coin" to="Coins/CoinHolder21/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder22/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder22/Coin" to="Coins/CoinHolder22/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder23/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder23/Coin" to="Coins/CoinHolder23/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder24/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder24/Coin" to="Coins/CoinHolder24/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder25/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder25/Coin" to="Coins/CoinHolder25/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder26/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder26/Coin" to="Coins/CoinHolder26/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder27/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder27/Coin" to="Coins/CoinHolder27/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder28/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder28/Coin" to="Coins/CoinHolder28/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder29/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder29/Coin" to="Coins/CoinHolder29/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder30/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder30/Coin" to="Coins/CoinHolder30/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder31/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder31/Coin" to="Coins/CoinHolder31/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder32/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder32/Coin" to="Coins/CoinHolder32/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder33/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder33/Coin" to="Coins/CoinHolder33/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder34/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder34/Coin" to="Coins/CoinHolder34/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder35/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder35/Coin" to="Coins/CoinHolder35/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder36/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder36/Coin" to="Coins/CoinHolder36/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder37/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder37/Coin" to="Coins/CoinHolder37/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder38/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder38/Coin" to="Coins/CoinHolder38/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder39/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder39/Coin" to="Coins/CoinHolder39/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder40/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder40/Coin" to="Coins/CoinHolder40/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder41/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder41/Coin" to="Coins/CoinHolder41/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder42/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder42/Coin" to="Coins/CoinHolder42/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder43/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder43/Coin" to="Coins/CoinHolder43/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder44/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder44/Coin" to="Coins/CoinHolder44/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder45/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder45/Coin" to="Coins/CoinHolder45/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder46/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder46/Coin" to="Coins/CoinHolder46/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder47/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder47/Coin" to="Coins/CoinHolder47/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder48/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder48/Coin" to="Coins/CoinHolder48/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder49/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder49/Coin" to="Coins/CoinHolder49/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder50/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder50/Coin" to="Coins/CoinHolder50/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder51/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder51/Coin" to="Coins/CoinHolder51/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder52/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder52/Coin" to="Coins/CoinHolder52/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder53/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder53/Coin" to="Coins/CoinHolder53/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder54/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder54/Coin" to="Coins/CoinHolder54/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder55/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder55/Coin" to="Coins/CoinHolder55/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder56/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder56/Coin" to="Coins/CoinHolder56/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder57/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder57/Coin" to="Coins/CoinHolder57/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder58/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder58/Coin" to="Coins/CoinHolder58/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder59/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder59/Coin" to="Coins/CoinHolder59/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder60/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder60/Coin" to="Coins/CoinHolder60/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder61/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder61/Coin" to="Coins/CoinHolder61/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder62/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder62/Coin" to="Coins/CoinHolder62/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder63/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder63/Coin" to="Coins/CoinHolder63/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder64/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder64/Coin" to="Coins/CoinHolder64/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder65/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder65/Coin" to="Coins/CoinHolder65/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder66/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder66/Coin" to="Coins/CoinHolder66/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder67/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder67/Coin" to="Coins/CoinHolder67/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder68/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder68/Coin" to="Coins/CoinHolder68/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder69/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder69/Coin" to="Coins/CoinHolder69/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder70/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder70/Coin" to="Coins/CoinHolder70/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder71/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder71/Coin" to="Coins/CoinHolder71/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder72/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder72/Coin" to="Coins/CoinHolder72/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder73/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder73/Coin" to="Coins/CoinHolder73/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder74/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder74/Coin" to="Coins/CoinHolder74/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder75/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder75/Coin" to="Coins/CoinHolder75/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder76/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder76/Coin" to="Coins/CoinHolder76/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder77/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder77/Coin" to="Coins/CoinHolder77/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder78/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder78/Coin" to="Coins/CoinHolder78/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder79/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder79/Coin" to="Coins/CoinHolder79/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder81/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder81/Coin" to="Coins/CoinHolder81/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder82/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder82/Coin" to="Coins/CoinHolder82/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder83/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder83/Coin" to="Coins/CoinHolder83/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder84/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder84/Coin" to="Coins/CoinHolder84/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder85/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder85/Coin" to="Coins/CoinHolder85/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder86/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder86/Coin" to="Coins/CoinHolder86/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder87/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder87/Coin" to="Coins/CoinHolder87/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder88/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder88/Coin" to="Coins/CoinHolder88/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder89/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder89/Coin" to="Coins/CoinHolder89/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder90/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder90/Coin" to="Coins/CoinHolder90/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder91/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder91/Coin" to="Coins/CoinHolder91/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder92/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder92/Coin" to="Coins/CoinHolder92/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder93/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder93/Coin" to="Coins/CoinHolder93/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder94/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder94/Coin" to="Coins/CoinHolder94/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder95/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder95/Coin" to="Coins/CoinHolder95/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder96/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder96/Coin" to="Coins/CoinHolder96/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder97/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder97/Coin" to="Coins/CoinHolder97/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder98/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder98/Coin" to="Coins/CoinHolder98/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder99/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder99/Coin" to="Coins/CoinHolder99/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder100/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder100/Coin" to="Coins/CoinHolder100/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder101/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder101/Coin" to="Coins/CoinHolder101/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder102/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder102/Coin" to="Coins/CoinHolder102/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder103/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder103/Coin" to="Coins/CoinHolder103/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder104/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder104/Coin" to="Coins/CoinHolder104/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder105/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder105/Coin" to="Coins/CoinHolder105/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder106/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder106/Coin" to="Coins/CoinHolder106/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder107/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder107/Coin" to="Coins/CoinHolder107/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder108/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder108/Coin" to="Coins/CoinHolder108/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder109/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder109/Coin" to="Coins/CoinHolder109/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder110/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder110/Coin" to="Coins/CoinHolder110/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder111/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder111/Coin" to="Coins/CoinHolder111/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder112/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder112/Coin" to="Coins/CoinHolder112/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder113/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder113/Coin" to="Coins/CoinHolder113/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder114/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder114/Coin" to="Coins/CoinHolder114/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder115/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder115/Coin" to="Coins/CoinHolder115/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder116/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder116/Coin" to="Coins/CoinHolder116/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder117/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder117/Coin" to="Coins/CoinHolder117/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder119/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder119/Coin" to="Coins/CoinHolder119/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder118/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder118/Coin" to="Coins/CoinHolder118/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder80/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder80/Coin" to="Coins/CoinHolder80/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder120/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder120/Coin" to="Coins/CoinHolder120/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder121/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder121/Coin" to="Coins/CoinHolder121/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder122/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder122/Coin" to="Coins/CoinHolder122/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder123/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder123/Coin" to="Coins/CoinHolder123/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder124/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder124/Coin" to="Coins/CoinHolder124/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder125/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder125/Coin" to="Coins/CoinHolder125/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder126/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder126/Coin" to="Coins/CoinHolder126/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder127/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder127/Coin" to="Coins/CoinHolder127/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder128/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder128/Coin" to="Coins/CoinHolder128/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder129/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder129/Coin" to="Coins/CoinHolder129/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder130/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder130/Coin" to="Coins/CoinHolder130/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder131/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder131/Coin" to="Coins/CoinHolder131/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder132/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder132/Coin" to="Coins/CoinHolder132/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder133/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder133/Coin" to="Coins/CoinHolder133/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder134/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder134/Coin" to="Coins/CoinHolder134/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder135/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder135/Coin" to="Coins/CoinHolder135/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder136/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder136/Coin" to="Coins/CoinHolder136/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder137/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder137/Coin" to="Coins/CoinHolder137/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder138/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder138/Coin" to="Coins/CoinHolder138/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder139/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder139/Coin" to="Coins/CoinHolder139/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder140/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder140/Coin" to="Coins/CoinHolder140/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder141/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder141/Coin" to="Coins/CoinHolder141/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder142/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder142/Coin" to="Coins/CoinHolder142/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder143/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder143/Coin" to="Coins/CoinHolder143/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder144/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder144/Coin" to="Coins/CoinHolder144/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder145/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder145/Coin" to="Coins/CoinHolder145/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder146/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder146/Coin" to="Coins/CoinHolder146/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder147/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder147/Coin" to="Coins/CoinHolder147/Coin" method="_on_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder148/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder148/Coin" to="Coins/CoinHolder148/Coin" method="_on_body_entered"]
+[connection signal="timeout" from="UI/lblCounter/ExitTimer" to="UI/lblCounter" method="_on_exit_timer_timeout"]
+[connection signal="body_entered" from="Enemies/Enemy2" to="Player1" method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Enemies/Enemy3" to="Player1" method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Enemies/Enemy4" to="Player1" method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Enemies/Enemy5" to="Player1" method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Enemies/Enemy6" to="Player1" method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Enemies/Enemy1" to="Player1" method="_on_enemy_body_entered"]

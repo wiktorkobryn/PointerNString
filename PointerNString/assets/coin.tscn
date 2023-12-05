@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://0j0c74qr5rfl"]
+
+[ext_resource type="Script" path="res://scripts/coin.cs" id="1_k8qpx"]
+[ext_resource type="Texture2D" uid="uid://cdxtnyxm400r7" path="res://textures/battery_full.png" id="1_wkltr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1gjl"]
+albedo_color = Color(0.372549, 0.929412, 0, 1)
+metallic = 0.06
+metallic_specular = 0.14
+roughness = 0.14
+emission_enabled = true
+emission = Color(0.227451, 0.427451, 0, 1)
+emission_energy_multiplier = 2.57
+
+[sub_resource type="SphereMesh" id="SphereMesh_hq5el"]
+material = SubResource("StandardMaterial3D_m1gjl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wtd1q"]
+size = Vector3(1, 0.89664, 0.485664)
+
+[sub_resource type="Animation" id="Animation_nffcf"]
+resource_name = "bounce"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.806764, -0.25, 0, 0.25, 0, 0.209908, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_dmeln"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbp5q"]
+_data = {
+"RESET": SubResource("Animation_dmeln"),
+"bounce": SubResource("Animation_nffcf")
+}
+
+[node name="Coin" type="Area3D"]
+transform = Transform3D(1.64106, 0, 0, 0, 1.64106, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_k8qpx")
+
+[node name="CoinMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.36796, 0, 0, 0, 0.36796, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_hq5el")
+
+[node name="CoinCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.50026, 0, 0, 0, 0.50026, 0, 0, 0, 0.50026, 0, 0, 0)
+shape = SubResource("BoxShape3D_wtd1q")
+
+[node name="CoinSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.0761282, 0, 0, 0, 0.0761282, 0, 0, 0, 0.0761282, 0, 0, 0)
+visible = false
+gi_mode = 0
+texture = ExtResource("1_wkltr")
+
+[node name="CoinTimer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="CoinAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cbp5q")
+}
+
+[connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]

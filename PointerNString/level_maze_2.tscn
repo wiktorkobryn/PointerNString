@@ -1,0 +1,186 @@
+[gd_scene load_steps=17 format=3 uid="uid://c0l8voipjfynp"]
+
+[ext_resource type="PackedScene" uid="uid://7mgm4cnxivnn" path="res://assets/player_1.tscn" id="2_4up4d"]
+[ext_resource type="Script" path="res://scripts/player_1.cs" id="3_x2tu0"]
+[ext_resource type="PackedScene" uid="uid://0j0c74qr5rfl" path="res://assets/coin.tscn" id="4_qpv8g"]
+[ext_resource type="Texture2D" uid="uid://cdxtnyxm400r7" path="res://textures/battery_full.png" id="5_xvihx"]
+[ext_resource type="FontFile" uid="uid://b5bq7e43eqhg2" path="res://fonts/Fyodor-Bold.ttf" id="6_uf6wi"]
+[ext_resource type="Script" path="res://scripts/lblCounter.cs" id="7_hegpa"]
+[ext_resource type="Texture2D" uid="uid://c0o7vpknmd1io" path="res://textures/background1.png" id="8_iytms"]
+[ext_resource type="Texture2D" uid="uid://cuxjak3ufgb4c" path="res://textures/background2.png" id="9_r4ef5"]
+[ext_resource type="Texture2D" uid="uid://dj5w25j55nndm" path="res://textures/background3.png" id="10_ks7m3"]
+[ext_resource type="Texture2D" uid="uid://c55ajchyqxa10" path="res://textures/background4.png" id="11_cyaen"]
+[ext_resource type="Texture2D" uid="uid://nk84v6a2egmu" path="res://textures/background5.png" id="12_mcy26"]
+[ext_resource type="MeshLibrary" uid="uid://dg60f8oimhjcg" path="res://assets/wallBlockLibrary.tres" id="13_tt7m5"]
+[ext_resource type="PackedScene" uid="uid://2hflv3fiex36" path="res://assets/enemy1.tscn" id="14_vf421"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tb75j"]
+sky_top_color = Color(0.972549, 0.980392, 0.533333, 1)
+sky_horizon_color = Color(0.505882, 0.701961, 0.576471, 1)
+sky_curve = 0.0989635
+ground_bottom_color = Color(0.207843, 0.396078, 0.603922, 1)
+ground_horizon_color = Color(0.505882, 0.701961, 0.576471, 1)
+ground_curve = 0.139289
+
+[sub_resource type="Sky" id="Sky_6mlko"]
+sky_material = SubResource("ProceduralSkyMaterial_tb75j")
+
+[sub_resource type="Environment" id="Environment_famif"]
+background_mode = 2
+background_energy_multiplier = 1.18
+sky = SubResource("Sky_6mlko")
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 4.0
+ssao_power = 2.35375
+ssao_detail = 1.66
+ssao_horizon = 0.15
+glow_enabled = true
+
+[node name="LevelMaze2" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_famif")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.169857, 0.985412, 0.0105454, 0.338752, 0.0483357, 0.939633, 0.925417, 0.163176, -0.34202, 25.381, 90.4733, -0.609966)
+shadow_enabled = true
+
+[node name="Player1" parent="." instance=ExtResource("2_4up4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+script = ExtResource("3_x2tu0")
+
+[node name="MainCamera" type="Camera3D" parent="Player1"]
+transform = Transform3D(1, 0, 0, 0, 0.928751, 0.370703, 0, -0.370703, 0.928751, 0.147761, 2.85898, 5.70283)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Battery" type="Sprite2D" parent="UI"]
+position = Vector2(64, 64)
+scale = Vector2(0.13173, 0.120632)
+texture = ExtResource("5_xvihx")
+
+[node name="lblX" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 47.0
+offset_right = 223.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("6_uf6wi")
+theme_override_font_sizes/font_size = 30
+text = "X"
+
+[node name="lblCounter" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 39.0
+offset_right = 269.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("6_uf6wi")
+theme_override_font_sizes/font_size = 50
+text = "cnt"
+script = ExtResource("7_hegpa")
+
+[node name="ExitTimer" type="Timer" parent="UI/lblCounter"]
+wait_time = 3.0
+
+[node name="WinScreen" type="Node2D" parent="UI/lblCounter"]
+visible = false
+position = Vector2(270, 17)
+
+[node name="bcgWin" type="ColorRect" parent="UI/lblCounter/WinScreen"]
+offset_left = -105.0
+offset_top = -35.0
+offset_right = -53.0
+offset_bottom = 5.0
+scale = Vector2(14.5322, 2.84082)
+color = Color(0.0823529, 0.196078, 0.443137, 1)
+
+[node name="lblWin" type="Label" parent="UI/lblCounter/WinScreen"]
+offset_left = -84.0
+offset_top = -6.0
+offset_right = 443.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("6_uf6wi")
+theme_override_font_sizes/font_size = 50
+text = "ENERGY COLLECTED - BATTERY FULL!"
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Layer1" type="Node3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.51838, 0)
+
+[node name="Buildings1" type="Sprite3D" parent="Background/Layer1"]
+transform = Transform3D(1.64847, 0, 0, 0, 1.64847, 0, 0, 0, 1.64847, -16.2154, 1.87979, -24.1946)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("8_iytms")
+
+[node name="Buildings2" type="Sprite3D" parent="Background/Layer1"]
+transform = Transform3D(1.64847, 0, 0, 0, 1.64847, 0, 0, 0, 1.64847, 17.3591, -0.0300541, -25.8658)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("9_r4ef5")
+
+[node name="Layer2" type="Node3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.09584, 16.6293, 1.10801)
+
+[node name="Buildings3" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.71744, 0, 0, 0, 2.71744, 0, 0, 0, 2.71744, -42.6125, -4.3892, -50.2563)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("10_ks7m3")
+
+[node name="Buildings4" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.71, 0, 0, 0, 2.71, 0, 0, 0, 2.71, 11.271, 3.56313, -48.3971)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("11_cyaen")
+
+[node name="Buildings4b" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.71, 0, 0, 0, -2.71, -2.36916e-07, 0, 2.36916e-07, -2.71, 11.271, -36.672, -48.3971)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("11_cyaen")
+
+[node name="Buildings5" type="Sprite3D" parent="Background/Layer2"]
+transform = Transform3D(2.78, 0, 0, 0, 2.78, 0, 0, 0, 2.78, 67.1819, -7.23953, -50.367)
+visibility_range_fade_mode = 1
+alpha_antialiasing_mode = 1
+texture_filter = 0
+texture = ExtResource("12_mcy26")
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("14_vf421")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03941, 2, -2.49224)
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="CoinHolder1" type="Node3D" parent="Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2.27371)
+
+[node name="Coin" parent="Coins/CoinHolder1" instance=ExtResource("4_qpv8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("13_tt7m5")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65535, 65535, 2, 0, 65535, 2, 0, 0, 2, 65535, 0, 2, 65534, 65535, 2, 65534, 0, 2, 65534, 1, 2, 65535, 1, 2, 1, 0, 2, 1, 1, 2, 0, 1, 2, 65534, 65534, 2, 65535, 65534, 2, 0, 65534, 2, 1, 65534, 2, 1, 65535, 2, 65533, 65534, 2, 65533, 65535, 2, 65533, 0, 2, 65533, 1, 2, 65533, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 65534, 2, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 65533, 65533, 2, 2, 65533, 2, 1, 65533, 2, 0, 65533, 2, 65535, 65533, 2, 65534, 65533, 2)
+}
+
+[connection signal="timeout" from="UI/lblCounter/ExitTimer" to="UI/lblCounter" method="_on_exit_timer_timeout"]
+[connection signal="body_entered" from="Enemies/Enemy1" to="Player1" method="_on_enemy_body_entered"]
+[connection signal="CoinCollected" from="Coins/CoinHolder1/Coin" to="UI/lblCounter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/CoinHolder1/Coin" to="Coins/CoinHolder1/Coin" method="_on_body_entered"]

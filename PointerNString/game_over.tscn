@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dynufwjsb2yhx"]
+
+[ext_resource type="FontFile" uid="uid://b5bq7e43eqhg2" path="res://fonts/Fyodor-Bold.ttf" id="1_tk0mf"]
+[ext_resource type="Script" path="res://scripts/BtnPlay.cs" id="2_2f4bo"]
+[ext_resource type="Texture2D" uid="uid://btfroog2wqcg7" path="res://textures/enemy_idle1/enemy_idle1_00.png" id="3_jaj23"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.0823529, 0.196078, 0.443137, 1)
+
+[node name="LblTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = -153.0
+offset_top = -65.0
+offset_right = 1771.0
+offset_bottom = 524.0
+theme_override_fonts/font = ExtResource("1_tk0mf")
+theme_override_font_sizes/font_size = 140
+text = "GAME OVER!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnPlay" type="Button" parent="."]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 385.0
+offset_right = 947.0
+offset_bottom = 499.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
+theme_override_fonts/font = ExtResource("1_tk0mf")
+theme_override_font_sizes/font_size = 40
+text = "GRAM DALEJ >"
+script = ExtResource("2_2f4bo")
+
+[node name="Sprite2DEnemy1" type="Sprite2D" parent="."]
+position = Vector2(308, 482)
+rotation = -0.142189
+scale = Vector2(0.319037, 0.319037)
+texture = ExtResource("3_jaj23")
+
+[node name="Sprite2DEnemy2" type="Sprite2D" parent="."]
+position = Vector2(1304, 482)
+rotation = 0.173249
+scale = Vector2(0.319037, 0.319037)
+texture = ExtResource("3_jaj23")
+flip_h = true
+
+[node name="BtnMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 538.0
+offset_right = 966.0
+offset_bottom = 652.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
+theme_override_fonts/font = ExtResource("1_tk0mf")
+theme_override_font_sizes/font_size = 40
+text = "MENU"
+script = ExtResource("2_2f4bo")
+
+[connection signal="pressed" from="BtnPlay" to="BtnPlay" method="_on_pressed"]
+[connection signal="pressed" from="BtnMenu" to="BtnMenu" method="_on_btn_menu_pressed"]

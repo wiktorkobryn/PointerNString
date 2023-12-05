@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxgpmijjn7sf7"]
+
+[ext_resource type="Texture2D" uid="uid://cofl5m8pe6in4" path="res://textures/tile_wall1.png" id="1_ineqq"]
+[ext_resource type="Texture2D" uid="uid://drlt1prgerbpn" path="res://textures/tile_floor1.png" id="2_q1hhg"]
+[ext_resource type="Texture2D" uid="uid://cqouejki3wpgo" path="res://textures/tile_floor2.png" id="3_7cf6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yw6b"]
+albedo_texture = ExtResource("1_ineqq")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2qwhr"]
+material = SubResource("StandardMaterial3D_2yw6b")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5spim"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hlqb"]
+albedo_texture = ExtResource("2_q1hhg")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sjj6f"]
+material = SubResource("StandardMaterial3D_1hlqb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx4r0"]
+albedo_texture = ExtResource("3_7cf6x")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6rh71"]
+material = SubResource("StandardMaterial3D_wx4r0")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WallBlockBlue" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999716, 0, 0, 0, 0.999716, 0, 0, 0, 0.999716, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_2qwhr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallBlockBlue"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBlockBlue/StaticBody3D"]
+shape = SubResource("BoxShape3D_5spim")
+
+[node name="WallBlockWhite" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999716, 0, 0, 0, 0.999716, 0, 0, 0, 0.999716, 0, 0, 0)
+mesh = SubResource("BoxMesh_sjj6f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallBlockWhite"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBlockWhite/StaticBody3D"]
+shape = SubResource("BoxShape3D_5spim")
+
+[node name="WallBlockTape" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999716, 0, 0, 0, 0.999716, 0, 0, 0, 0.999716, 0, 0, 0)
+mesh = SubResource("BoxMesh_6rh71")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallBlockTape"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBlockTape/StaticBody3D"]
+shape = SubResource("BoxShape3D_5spim")
