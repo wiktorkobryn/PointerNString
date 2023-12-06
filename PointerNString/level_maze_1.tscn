@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://o1tenemyepe"]
+[gd_scene load_steps=40 format=3 uid="uid://o1tenemyepe"]
 
 [ext_resource type="Texture2D" uid="uid://bfu8ofshd6opy" path="res://textures/floor_tmp.png" id="1_hmcp7"]
 [ext_resource type="PackedScene" uid="uid://7mgm4cnxivnn" path="res://assets/player_1.tscn" id="1_jv8q6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dj5w25j55nndm" path="res://textures/background3.png" id="11_ha1do"]
 [ext_resource type="Texture2D" uid="uid://c55ajchyqxa10" path="res://textures/background4.png" id="12_uio6k"]
 [ext_resource type="Texture2D" uid="uid://nk84v6a2egmu" path="res://textures/background5.png" id="13_pxyx0"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="15_o6gj0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tb75j"]
 sky_top_color = Color(0.972549, 0.980392, 0.533333, 1)
@@ -1977,6 +1978,18 @@ theme_override_fonts/font = ExtResource("8_05jtj")
 theme_override_font_sizes/font_size = 50
 text = "ENERGY COLLECTED - BATTERY FULL!"
 
+[node name="Virtual joystick right" parent="UI" instance=ExtResource("15_o6gj0")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+joystick_mode = 1
+
 [node name="Background" type="Node3D" parent="."]
 
 [node name="Layer1" type="Node3D" parent="Background"]
@@ -2054,7 +2067,7 @@ libraries = {
 }
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("5_4hbk7")]
-transform = Transform3D(-1, 2.19553e-06, 1.26759e-06, 0, 0.499998, -0.866026, -2.53518e-06, -0.866026, -0.499998, 4.93917, 2.11107, -14.0792)
+transform = Transform3D(-1, 2.19553e-06, 1.26758e-06, 0, 0.499998, -0.866026, -2.53518e-06, -0.866026, -0.499998, 4.93917, 2.11107, -14.0792)
 
 [node name="pathE3" type="AnimationPlayer" parent="Enemies/Enemy3"]
 autoplay = "path"
@@ -2063,7 +2076,7 @@ libraries = {
 }
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("5_4hbk7")]
-transform = Transform3D(-1, 2.19553e-06, 1.26759e-06, 0, 0.499998, -0.866026, -2.53518e-06, -0.866026, -0.499998, -11.9945, 2.11107, -3.03608)
+transform = Transform3D(-1, 2.19553e-06, 1.26758e-06, 0, 0.499998, -0.866026, -2.53518e-06, -0.866026, -0.499998, -11.9945, 2.11107, -3.03608)
 
 [node name="pathE4" type="AnimationPlayer" parent="Enemies/Enemy4"]
 autoplay = "path"
