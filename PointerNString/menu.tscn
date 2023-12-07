@@ -22,10 +22,8 @@ color = Color(0.0823529, 0.196078, 0.443137, 1)
 
 [node name="LblTitle" type="Label" parent="."]
 layout_mode = 0
-offset_left = -128.0
-offset_top = -104.0
-offset_right = 1796.0
-offset_bottom = 485.0
+offset_right = 1920.0
+offset_bottom = 500.0
 theme_override_fonts/font = ExtResource("1_3mbkg")
 theme_override_font_sizes/font_size = 140
 text = "pointer & string"
@@ -34,10 +32,10 @@ vertical_alignment = 1
 
 [node name="BtnPlay" type="Button" parent="."]
 layout_mode = 0
-offset_left = 705.0
-offset_top = 338.0
-offset_right = 973.0
-offset_bottom = 452.0
+offset_left = 823.0
+offset_top = 367.0
+offset_right = 1091.0
+offset_bottom = 481.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
 theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
@@ -48,10 +46,10 @@ script = ExtResource("2_idroo")
 
 [node name="BtnQuit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 707.0
-offset_top = 600.0
-offset_right = 975.0
-offset_bottom = 714.0
+offset_left = 825.0
+offset_top = 629.0
+offset_right = 1093.0
+offset_bottom = 743.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
 theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
@@ -61,17 +59,17 @@ text = "quit"
 script = ExtResource("2_idroo")
 
 [node name="Sprite2DPlayer1" type="Sprite2D" parent="."]
-position = Vector2(331, 611)
+position = Vector2(536, 587)
 rotation = -0.142189
 scale = Vector2(0.280716, 0.280716)
 texture = ExtResource("3_r2sfp")
 
 [node name="BtnPlay2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 678.0
-offset_top = 470.0
-offset_right = 1015.0
-offset_bottom = 584.0
+offset_left = 788.0
+offset_top = 499.0
+offset_right = 1125.0
+offset_bottom = 613.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
 theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
@@ -82,10 +80,10 @@ script = ExtResource("2_idroo")
 
 [node name="LblTitle3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 696.0
-offset_right = 2208.0
-offset_bottom = 1075.0
+offset_left = 639.0
+offset_top = 745.0
+offset_right = 2326.0
+offset_bottom = 1124.0
 scale = Vector2(0.381723, 0.236337)
 theme_override_fonts/font = ExtResource("1_3mbkg")
 theme_override_font_sizes/font_size = 80
@@ -94,13 +92,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2DBattery" type="Sprite2D" parent="."]
-position = Vector2(1307.63, 540.634)
+position = Vector2(1298.63, 537.634)
 rotation = 0.0812771
 scale = Vector2(0.234968, 0.234968)
 texture = ExtResource("4_uar7t")
 
 [node name="Sprite2DBattery2" type="Sprite2D" parent="."]
-position = Vector2(1410.21, 581.414)
+position = Vector2(1401.21, 578.414)
 rotation = 0.359654
 scale = Vector2(0.22824, 0.22824)
 texture = ExtResource("5_wh6ly")
