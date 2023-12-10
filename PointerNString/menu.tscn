@@ -55,7 +55,23 @@ theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
 theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
 theme_override_fonts/font = ExtResource("1_3mbkg")
 theme_override_font_sizes/font_size = 40
+disabled = true
 text = "quit"
+script = ExtResource("2_idroo")
+
+[node name="BtnQuit2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1727.0
+offset_top = 52.0
+offset_right = 1995.0
+offset_bottom = 166.0
+scale = Vector2(0.451199, 0.451199)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
+theme_override_fonts/font = ExtResource("1_3mbkg")
+theme_override_font_sizes/font_size = 40
+text = "<q>"
 script = ExtResource("2_idroo")
 
 [node name="Sprite2DPlayer1" type="Sprite2D" parent="."]
@@ -75,6 +91,7 @@ theme_override_colors/font_hover_color = Color(0.541176, 0.690196, 1, 1)
 theme_override_colors/icon_pressed_color = Color(0, 0.517647, 0.823529, 1)
 theme_override_fonts/font = ExtResource("1_3mbkg")
 theme_override_font_sizes/font_size = 40
+disabled = true
 text = "POZIOM 2 (beta) >"
 script = ExtResource("2_idroo")
 
@@ -97,6 +114,12 @@ rotation = 0.0812771
 scale = Vector2(0.234968, 0.234968)
 texture = ExtResource("4_uar7t")
 
+[node name="Sprite2DBattery3" type="Sprite2D" parent="."]
+position = Vector2(1798, 76)
+rotation = 1.57656
+scale = Vector2(0.234968, 0.234968)
+texture = ExtResource("4_uar7t")
+
 [node name="Sprite2DBattery2" type="Sprite2D" parent="."]
 position = Vector2(1401.21, 578.414)
 rotation = 0.359654
@@ -105,4 +128,5 @@ texture = ExtResource("5_wh6ly")
 
 [connection signal="pressed" from="BtnPlay" to="BtnPlay" method="_on_pressed"]
 [connection signal="pressed" from="BtnQuit" to="BtnQuit" method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="BtnQuit2" to="BtnQuit2" method="_on_btn_quit_pressed"]
 [connection signal="pressed" from="BtnPlay2" to="BtnPlay" method="_on_btn_play_2_pressed"]

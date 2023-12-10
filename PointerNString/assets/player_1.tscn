@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://knlrkkkcj3pd" path="res://textures/pointer_idle1/pointer_idle1_26.png" id="27_cx38r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cflq"]
-size = Vector3(0.903098, 1.90962, 0.944486)
+size = Vector3(0.855816, 1.90962, 0.944486)
 
 [sub_resource type="SphereMesh" id="SphereMesh_w0yvn"]
 
